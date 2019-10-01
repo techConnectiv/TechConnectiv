@@ -1,0 +1,151 @@
+<app-layout>
+    <main>
+        <mat-toolbar>
+            <img src="../../assets/logo.png" alt="">
+            <h2>TechConnective</h2>
+        </mat-toolbar>
+
+        <!-- <div class="area"></div> -->
+        <nav class="main-menu">
+            <ul>
+                <li>
+                    <a [routerLink]="['/home']" routerLinkActive="active" [routerLinkActiveOptions]="{ exect: true }">
+                        <i class="fa fa-home fa-2x"></i>
+                        <span class="nav-text">
+          Inicio
+        </span>
+                    </a>
+                </li>
+                <li class="has-subnav">
+                    <a [routerLink]="['/biography']" routerLinkActive="active">
+                        <i class="fa fa-link fa-2x"></i>
+                        <span class="nav-text">
+          Sobre nós
+        </span>
+                    </a>
+                </li>
+                <li class="has-subnav">
+                    <a [routerLink]="['/doubts']" routerLinkActive="active">
+                        <i class="fa fa-info fa-2x"></i>
+                        <span class="nav-text">
+          Como doar
+        </span>
+                    </a>
+                </li>
+                <li class="has-subnav">
+                    <a [routerLink]="['/info']" routerLinkActive="active">
+                        <i class="fa fa-folder-open fa-2x"></i>
+                        <span class="nav-text">
+          Saiba mais
+        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-bar-chart-o fa-2x"></i>
+                        <span class="nav-text">
+          Minhas doações
+        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-user fa-2x"></i>
+                        <span class="nav-text">
+          Perfil
+        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-calendar fa-2x"></i>
+                        <span class="nav-text">
+          Eventos
+        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-map-marker fa-2x"></i>
+                        <span class="nav-text">
+          Encontrar
+        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-info fa-2x"></i>
+                        <span class="nav-text">
+          Documentation
+        </span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="logout">
+                <li>
+                    <a [routerLink]="['/login']" routerLinkActive="active">
+                        <i class="fa fa-power-off fa-2x"></i>
+                        <span class="nav-text">
+          Logout
+        </span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- <mat-toolbar>
+    <img src="../../assets/logo.png" />
+
+    <div class="exemple-space"></div>
+
+    <nav>
+        <ul>
+            <li>
+                <a [routerLink]="['/home']" routerLinkActive="active" [routerLinkActiveOptions]="{exect: true}">Home</a>
+            </li>
+
+            <li>
+                <a [routerLink]="['/biography']" routerLinkActive="active">Sobre Nós</a>
+            </li>
+            <li>
+                <a [routerLink]="['/doubts']" routerLinkActive="active">Como Doar</a>
+            </li>
+
+            <li>
+                <a [routerLink]="['/info']" routerLinkActive="active">Saiba Mais</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="exemple-space"></div>
+
+    <div class="search">
+        <input type="text" name="" placeholder="Buscar">
+        <input type="submit" name="" value="Search">
+    </div>
+
+    <ul>
+        <li>
+            <a [routerLink]="['/login']" routerLinkActive="active"> Login </a>
+        </li>
+
+        <li>
+            <a class="menu" [matMenuTriggerFor]="menu">Cadastre-se</a>
+            <mat-menu #menu="matMenu">
+                <a [routerLink]="['/empresa']" mat-menu-item>EMPRESA</a>
+                <a [routerLink]="['/comum']" mat-menu-item>USUÁRIO COMUM</a>
+                <a [routerLink]="['/ong']" mat-menu-item>ONG</a>
+            </mat-menu>
+        </li>
+    </ul>
+
+</mat-toolbar> -->
+
+
+        <app-menu></app-menu>
+        <app-loading></app-loading>
+        <router-outlet></router-outlet>
+    </main>
+
+</app-layout>
