@@ -3,6 +3,8 @@
 mat-toolbar {
     position: fixed;
     height: 50px;
+    background: #ffffff;
+    color: #000000;
 }
 
 mat-toolbar img {
@@ -35,7 +37,7 @@ nav.main-menu.expanded {
 }
 
 .main-menu {
-    background: #212121;
+    background: #ffffff;
     position: absolute;
     bottom: 0;
     top: 50px;
@@ -63,7 +65,7 @@ nav.main-menu.expanded {
     display: table;
     border-collapse: collapse;
     border-spacing: 0;
-    color: #999;
+    color: #000000;
     font-family: arial;
     font-size: 14px;
     text-decoration: none;
@@ -136,7 +138,8 @@ nav.main-menu li.active>a,
 .dashboard-page nav.dashboard-menu ul li.active a {
     color: #fff;
     background-color: #5fa2db;
-    border-radius: 25px 25px 25px 25px;
+    border-radius: 0px 25px 25px 0px;
+    width: 200px;
 }
 
 
