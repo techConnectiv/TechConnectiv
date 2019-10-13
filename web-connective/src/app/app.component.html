@@ -1,100 +1,111 @@
 <app-layout>
-    <main>
-        <mat-toolbar>
-            <img src="../../assets/logo.png" alt="">
-            <h2>TechConnective</h2>
-        </mat-toolbar>
+  <main>
+    <header>
+      <div id="nav">
+        <ul>
+          <li>
+              <img src="../../assets/logo.png" alt="" />
+          </li>
+          <li>
+              <h2>TechConnective</h2>
+          </li>
+        </ul>
+      </div>
+    </header>
 
-        <!-- <div class="area"></div> -->
-        <nav class="main-menu">
-            <ul>
-                <li>
-                    <a [routerLink]="['/home']" routerLinkActive="active" [routerLinkActiveOptions]="{ exect: true }">
-                        <i class="fa fa-home fa-2x"></i>
-                        <span class="nav-text">
-          Inicio
-        </span>
-                    </a>
-                </li>
-                <li class="has-subnav">
-                    <a [routerLink]="['/biography']" routerLinkActive="active">
-                        <i class="fa fa-link fa-2x"></i>
-                        <span class="nav-text">
-          Sobre nós
-        </span>
-                    </a>
-                </li>
-                <li class="has-subnav">
-                    <a [routerLink]="['/doubts']" routerLinkActive="active">
-                        <i class="fa fa-info fa-2x"></i>
-                        <span class="nav-text">
-          Como doar
-        </span>
-                    </a>
-                </li>
-                <li class="has-subnav">
-                    <a [routerLink]="['/info']" routerLinkActive="active">
-                        <i class="fa fa-folder-open fa-2x"></i>
-                        <span class="nav-text">
-          Saiba mais
-        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-bar-chart-o fa-2x"></i>
-                        <span class="nav-text">
-          Minhas doações
-        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-user fa-2x"></i>
-                        <span class="nav-text">
-          Perfil
-        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-calendar fa-2x"></i>
-                        <span class="nav-text">
-          Eventos
-        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-map-marker fa-2x"></i>
-                        <span class="nav-text">
-          Encontrar
-        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-info fa-2x"></i>
-                        <span class="nav-text">
-          Documentation
-        </span>
-                    </a>
-                </li>
-            </ul>
+    <!-- <div class="area"></div> -->
+    <nav class="main-menu">
+      <ul>
+        <li>
+          <a
+            [routerLink]="['/home']"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exect: true }"
+          >
+            <i class="fa fa-home fa-2x"></i>
+            <span class="nav-text">
+              Inicio
+            </span>
+          </a>
+        </li>
+        <li class="has-subnav">
+          <a [routerLink]="['/biography']" routerLinkActive="active">
+            <i class="fa fa-link fa-2x"></i>
+            <span class="nav-text">
+              Sobre nós
+            </span>
+          </a>
+        </li>
+        <li class="has-subnav">
+          <a [routerLink]="['/doubts']" routerLinkActive="active">
+            <i class="fa fa-info fa-2x"></i>
+            <span class="nav-text">
+              Como doar
+            </span>
+          </a>
+        </li>
+        <li class="has-subnav">
+          <a [routerLink]="['/info']" routerLinkActive="active">
+            <i class="fa fa-folder-open fa-2x"></i>
+            <span class="nav-text">
+              Saiba mais
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-bar-chart-o fa-2x"></i>
+            <span class="nav-text">
+              Minhas doações
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-user fa-2x"></i>
+            <span class="nav-text">
+              Perfil
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-calendar fa-2x"></i>
+            <span class="nav-text">
+              Eventos
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-map-marker fa-2x"></i>
+            <span class="nav-text">
+              Encontrar
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-info fa-2x"></i>
+            <span class="nav-text">
+              Documentation
+            </span>
+          </a>
+        </li>
+      </ul>
 
-            <ul class="logout">
-                <li>
-                    <a [routerLink]="['/login']" routerLinkActive="active">
-                        <i class="fa fa-power-off fa-2x"></i>
-                        <span class="nav-text">
-          Logout
-        </span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        <app-loading></app-loading>
-        <router-outlet></router-outlet>
-    </main>
-
+      <ul class="logout">
+        <li>
+          <a [routerLink]="['/estatico']" routerLinkActive="active">
+            <i class="fa fa-power-off fa-2x"></i>
+            <span class="nav-text">
+              Logout
+            </span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <app-loading></app-loading>
+    <router-outlet></router-outlet>
+  </main>
 </app-layout>

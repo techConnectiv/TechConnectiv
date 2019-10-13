@@ -1,16 +1,38 @@
 @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
 @import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
-mat-toolbar {
-    position: fixed;
+#nav {
+    background: #fff;
     height: 50px;
-    background: #ffffff;
-    color: #000000;
-}
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
 
-mat-toolbar img {
+  #nav ul li img {
     height: 40px;
     width: 45px;
-}
+  }
+  #nav ul{
+    list-style: none;
+  }
+  #nav li {
+    display: inline-block;
+    padding: 10px;
+  }
+  #nav li:hover {
+    background: aquamarine;
+  }
+  #nav li:hover a{
+    color: black;
+  }
+  .content {
+    padding-top: 90px;
+  }
+  .anchor {
+    display: block; /*this is important!*/
+  }
 
 h2 {
     padding-left: 20px;
@@ -38,7 +60,8 @@ nav.main-menu.expanded {
 
 .main-menu {
     background: #ffffff;
-    position: absolute;
+    
+    position: fixed;
     bottom: 0;
     top: 50px;
     left: 0;

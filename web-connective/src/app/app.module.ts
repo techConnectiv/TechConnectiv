@@ -1,3 +1,4 @@
+import { CadastroComponent } from './cadastro/cadastro.component';
 import { LayoutComponent } from './layout/layout.component';
 import { LoadingComponent } from './loading/loading.component';
 import { MaterialModule } from './material/material.module';
@@ -16,11 +17,9 @@ import { BiografiaComponent } from './biografia/biografia.component';
 import { DoubtsComponent } from './doubts/doubts.component';
 import { InfoComponent } from './info/info.component';
 import { MenuComponent } from './menu/menu.component';
-import { EmpresaComponent } from './cadastro/empresa/empresa.component';
-import { ComumComponent } from './cadastro/comum/comum.component';
-import { OngComponent } from './cadastro/ong/ong.component';
-import { MatProgressBarModule } from '@angular/material';
-import { CarouselModule, CollapseModule } from 'ngx-bootstrap';
+import { MatProgressBarModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatTabsModule, MatStepperModule, MatButtonModule } from '@angular/material';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { EstaticoComponent } from './estatico/estatico.component';
 
 @NgModule({
   declarations: [
@@ -31,11 +30,10 @@ import { CarouselModule, CollapseModule } from 'ngx-bootstrap';
     DoubtsComponent,
     InfoComponent,
     MenuComponent,
-    EmpresaComponent,
-    ComumComponent,
-    OngComponent,
     LoadingComponent,
-    LayoutComponent
+    LayoutComponent,
+    CadastroComponent,
+    EstaticoComponent
   ],
   imports: [
     BrowserModule,
@@ -45,8 +43,14 @@ import { CarouselModule, CollapseModule } from 'ngx-bootstrap';
     AppRoutingModule,
     FlexLayoutModule,
     MatProgressBarModule,
-    CarouselModule.forRoot(),
-    CollapseModule.forRoot()
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatSelectModule,
+    MatTabsModule,
+    MatStepperModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
