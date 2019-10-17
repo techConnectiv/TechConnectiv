@@ -74,6 +74,7 @@
             <mat-form-field>
               <input
                 matInput
+                type="password"
                 placeholder="Senha"
                 formControlName="senha"
                 required
@@ -83,6 +84,7 @@
             <mat-form-field>
               <input
                 matInput
+                type="password"
                 placeholder="Repita sua senha"
                 formControlName="repeteSenha"
                 required
@@ -106,6 +108,15 @@
             &nbsp;
             <mat-form-field>
               <input matInput placeholder="Nº" formControlName="numero" />
+            </mat-form-field>
+            &nbsp;
+            <mat-form-field>
+              <mat-label>UF</mat-label>
+              <mat-select>
+                <mat-option *ngFor="let item of states" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-select>
             </mat-form-field>
             &nbsp;
             <mat-form-field>
@@ -202,12 +213,12 @@
             </mat-form-field>
             &nbsp;
             <mat-form-field>
-              <input
-                matInput
-                placeholder="sexo"
-                formControlName="sexo"
-                required
-              />
+              <mat-label>Sexo</mat-label>
+              <mat-select formControlName="sex">
+                <mat-option *ngFor="let item of sexo" [value]="item" >
+                  {{item.viewValue}}
+                </mat-option>
+              </mat-select>
             </mat-form-field>
             &nbsp;
             <mat-form-field>
@@ -283,17 +294,23 @@
               <input
                 matInput
                 placeholder="Telefone"
-                formControlName="telefone"
+                formControlName="telefone"/>
+            </mat-form-field>
+            &nbsp;
+            <mat-form-field>
+              <input matInput placeholder="Celular" formControlName="celular" [textMask]="{mask: mask}"/>
+            </mat-form-field>
+            &nbsp;
+            <mat-form-field>
+              <input
+                matInput
+                type="email"
+                placeholder="email"
+                formControlName="email"
+                email="true"
               />
             </mat-form-field>
-            &nbsp;
-            <mat-form-field>
-              <input matInput placeholder="Celular" formControlName="celular" />
-            </mat-form-field>
-            &nbsp;
-            <mat-form-field>
-              <input matInput placeholder="email" formControlName="email" />
-            </mat-form-field>
+
             <div>
               <div class="send">
                 <input matStepperNext value="Proximo" type="submit" />
@@ -409,11 +426,7 @@
             </mat-form-field>
             &nbsp;
             <mat-form-field>
-              <input
-                matInput
-                placeholder="URL da Ong"
-                formControlName="site"
-              />
+              <input matInput placeholder="URL da Ong" formControlName="site" />
             </mat-form-field>
             &nbsp;
             <mat-form-field>

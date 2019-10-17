@@ -17,9 +17,11 @@ import { BiografiaComponent } from './biografia/biografia.component';
 import { DoubtsComponent } from './doubts/doubts.component';
 import { InfoComponent } from './info/info.component';
 import { MenuComponent } from './menu/menu.component';
-import { MatProgressBarModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatTabsModule, MatStepperModule, MatButtonModule } from '@angular/material';
+import { MatProgressBarModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatTabsModule, MatStepperModule, MatButtonModule, MatOptionModule } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { EstaticoComponent } from './estatico/estatico.component';
+import { TextMaskModule } from 'angular2-text-mask';
+import { AuthService } from './service/auth.service';
 
 @NgModule({
   declarations: [
@@ -50,9 +52,13 @@ import { EstaticoComponent } from './estatico/estatico.component';
     MatSelectModule,
     MatTabsModule,
     MatStepperModule,
-    MatButtonModule
+    MatButtonModule,
+    TextMaskModule,
+    MatOptionModule
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

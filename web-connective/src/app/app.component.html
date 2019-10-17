@@ -14,7 +14,7 @@
     </header>
 
     <!-- <div class="area"></div> -->
-    <nav class="main-menu">
+    <nav class="main-menu" *ngIf="!show">
       <ul>
         <li>
           <a
@@ -28,14 +28,7 @@
             </span>
           </a>
         </li>
-        <li class="has-subnav">
-          <a [routerLink]="['/biography']" routerLinkActive="active">
-            <i class="fa fa-link fa-2x"></i>
-            <span class="nav-text">
-              Sobre nós
-            </span>
-          </a>
-        </li>
+
         <li class="has-subnav">
           <a [routerLink]="['/doubts']" routerLinkActive="active">
             <i class="fa fa-info fa-2x"></i>
@@ -44,14 +37,7 @@
             </span>
           </a>
         </li>
-        <li class="has-subnav">
-          <a [routerLink]="['/info']" routerLinkActive="active">
-            <i class="fa fa-folder-open fa-2x"></i>
-            <span class="nav-text">
-              Saiba mais
-            </span>
-          </a>
-        </li>
+
         <li>
           <a href="#">
             <i class="fa fa-bar-chart-o fa-2x"></i>
@@ -60,6 +46,7 @@
             </span>
           </a>
         </li>
+
         <li>
           <a href="#">
             <i class="fa fa-user fa-2x"></i>
@@ -84,19 +71,12 @@
             </span>
           </a>
         </li>
-        <li>
-          <a href="#">
-            <i class="fa fa-info fa-2x"></i>
-            <span class="nav-text">
-              Documentation
-            </span>
-          </a>
-        </li>
+        
       </ul>
 
       <ul class="logout">
         <li>
-          <a [routerLink]="['/estatico']" routerLinkActive="active">
+          <a [routerLink]="['/index']" routerLinkActive="active">
             <i class="fa fa-power-off fa-2x"></i>
             <span class="nav-text">
               Logout

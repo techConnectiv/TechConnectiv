@@ -1,6 +1,13 @@
 <body>
   <div class="content">
     <div class="page" id="page1">
+      <canvas></canvas>
+      <div class="fps-meter"></div>
+      <div class="fundo">
+        <div class="item1"></div>
+        <div class="item2"></div>
+        <div class="item3"></div>
+      </div>
       <div class="buttons">
         <h4>Soluções em tecnologia</h4>
         <h1>TECHCONNECTIVE</h1>
@@ -25,8 +32,9 @@
     <div class="page-divider pgd1"></div>
 
     <div class="page" id="page2">
-      <a class="anchor" id="sobreNos"></a>
-      <div class="title">SOBRE NÓS</div>
+      <div class="paragrafo">
+        <h1>SOBRE NÓS</h1>
+      </div>
 
       <div class="container">
         <div>
@@ -153,37 +161,125 @@
         </div>
       </div>
 
-      <p>
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-        ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
-        dis parturient montes, nascetur ridiculus mus. Donec quam felis,
-        ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa
-        quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
-        arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
-        Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras
-        dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend
-        tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac,
-        enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.
-        Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean
-        imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper
-        ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus
-        eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing
-        sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar,
-        hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec
-        vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit
-        amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris
-        sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget
-        bibendum sodales, augue velit cursus nunc,
-      </p>
+      <div class="paragrafo">
+        <h1>FOTOS</h1>
+        <h4>Veja algumas de nossas fotos</h4>
+      </div>
+
+      <div class="containers">
+        <div class="gallery">
+          <div class="gallery-item">
+            <img
+              class="gallery-image"
+              src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=500&h=500&fit=crop"
+              alt="person writing in a notebook beside by an iPad, laptop, printed photos, spectacles, and a cup of coffee on a saucer"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              class="gallery-image"
+              src="https://images.unsplash.com/photo-1515260268569-9271009adfdb?w=500&h=500&fit=crop"
+              alt="sunset behind San Francisco city skyline"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              class="gallery-image"
+              src="https://images.unsplash.com/photo-1506045412240-22980140a405?w=500&h=500&fit=crop"
+              alt="people holding umbrellas on a busy street at night lit by street lights and illuminated signs in Tokyo, Japan"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              class="gallery-image"
+              src="https://images.unsplash.com/photo-1514041181368-bca62cceffcd?w=500&h=500&fit=crop"
+              alt="car interior from central back seat position showing driver and blurred view through windscreen of a busy road at night"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              class="gallery-image"
+              src="https://images.unsplash.com/photo-1445810694374-0a94739e4a03?w=500&h=500&fit=crop"
+              alt="back view of woman wearing a backpack and beanie waiting to cross the road on a busy street at night in New York City, USA"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              class="gallery-image"
+              src="https://images.unsplash.com/photo-1486334803289-1623f249dd1e?w=500&h=500&fit=crop"
+              alt="man wearing a black jacket, white shirt, blue jeans, and brown boots, playing a white electric guitar while sitting on an amp"
+            />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </body>
 
 <footer>
-  <p>
-    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-    ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
-    parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
-    pellentesque eu, pretium quis, sem. <br />Thanks.
-  </p>
+  <div class="footer">
+    <h1>TECHCONNECTIVE</h1>
+    <h5>© 2019 TECHCONNECTIVE Brasil</h5>
+  </div>
+
+  <section class="footer-social-section flex-rw">
+    <span class="footer-social-overlap footer-social-connect">
+      ENTRAR <span class="footer-social-small">em</span> CONTATO
+    </span>
+    <span class="footer-social-overlap footer-social-icons-wrapper">
+      <a
+        href="https://www.pinterest.com/paviliongift/"
+        class="generic-anchor"
+        target="_blank"
+        title="Pinterest"
+        itemprop="significantLink"
+        ><i class="fa fa-pinterest"></i
+      ></a>
+      <a
+        href="https://www.facebook.com/paviliongift"
+        class="generic-anchor"
+        target="_blank"
+        title="Facebook"
+        itemprop="significantLink"
+        ><i class="fa fa-facebook"></i
+      ></a>
+      <a
+        href="https://twitter.com/PavilionGiftCo"
+        class="generic-anchor"
+        target="_blank"
+        title="Twitter"
+        itemprop="significantLink"
+        ><i class="fa fa-twitter"></i
+      ></a>
+      <a
+        href="http://instagram.com/paviliongiftcompany"
+        class="generic-anchor"
+        target="_blank"
+        title="Instagram"
+        itemprop="significantLink"
+        ><i class="fa fa-instagram"></i
+      ></a>
+      <a
+        href="https://www.youtube.com/channel/UCYgUODvd0qXbu_LkUWpTVEg"
+        class="generic-anchor"
+        target="_blank"
+        title="Youtube"
+        itemprop="significantLink"
+        ><i class="fa fa-youtube"></i
+      ></a>
+      <a
+        href="https://plus.google.com/+Paviliongift/posts"
+        class="generic-anchor"
+        target="_blank"
+        title="Google Plus"
+        itemprop="significantLink"
+        ><i class="fa fa-google-plus"></i
+      ></a>
+    </span>
+  </section>
 </footer>

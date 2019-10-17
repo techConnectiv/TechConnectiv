@@ -10,6 +10,6 @@ export class AppComponent {
   title = 'techConnective';
 
   constructor() {
-    setTheme('bs3'); // or 'bs4'
+    
   }
 }
