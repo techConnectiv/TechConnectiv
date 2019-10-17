@@ -2,12 +2,26 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { $ } from 'protractor';
 
+export interface Sexo {
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
   styleUrls: ['./cadastro.component.css']
 })
 export class CadastroComponent implements OnInit {
+  sexo: Sexo[] = [
+    {viewValue: 'M'},
+    {viewValue: 'F'}
+  ];
+
+  states: string[] = [
+    'AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA',
+    'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'
+  ];
+  public mask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
 
   firstFormEmpresa: FormGroup;
   secondFormEmpresa: FormGroup;
@@ -59,7 +73,7 @@ formDoador() {
     nome: ['', Validators.required],
     cpf: ['', Validators.required],
     dataNascimento: ['', Validators.required],
-    sexo: ['', Validators.required],
+    sex: ['', Validators.required],
     senha: ['', Validators.required],
     repeteSenha: ['', Validators.required]
   });
@@ -99,7 +113,10 @@ formOng(){
     telefone: [''],
     celular: [''],
     site: [''],
-    email: ['']
+    email: ['', [
+      Validators.required,
+      Validators.email,
+    ]]
 });
 }
   onSubmit() {

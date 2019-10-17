@@ -7,25 +7,25 @@
     <h1>Login</h1>
     <div class="usuario"></div>
 
-    <form>
+<!--     <form> -->
       <div class="form">
         <div class="exemple-container">
           <mat-form-field>
-            <input matInput placeholder="Usuario" />
+            <input [(ngModel)]="usuario.nome" matInput placeholder="Usuario" />
           </mat-form-field>
 
           <mat-form-field>
-            <input matInput placeholder="Senha" />
+            <input type="password" [(ngModel)]="usuario.senha" matInput placeholder="Senha" />
           </mat-form-field>
         </div>
 
-        <input type="submit" name="" value="Login" />
+        <input type="submit" value="Login" (click)="login()" />
 
         <div class="container">
           Não tem conta?<a href="#"><i> Cadastre-se </i></a><br />
           <a href="#"> Esqueceu sua senha? </a>
         </div>
       </div>
-    </form>
+<!--     </form> -->
   </div>
 </div>

@@ -15,8 +15,8 @@ const routes: Routes = [
   { path: 'info', component: InfoComponent },
   { path: 'login', component: LoginComponent },
   { path: 'cadastro', component: CadastroComponent },
-  { path: 'estatico', component: EstaticoComponent },
-  { path: '', redirectTo: '/estatico', pathMatch: 'full' },
+  { path: 'index', component: EstaticoComponent },
+  { path: '', redirectTo: '/index', pathMatch: 'full' },
 ];
 
 @NgModule({
