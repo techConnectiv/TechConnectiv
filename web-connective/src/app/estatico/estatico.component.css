@@ -1,57 +1,9 @@
-canvas {
-  border-radius: 50%;
-  position: absolute;
-  left: 30%;
-}
 
-.item1 {
-  position: absolute;
-  width: 100%;
+.content {
   height: 100%;
-  left: 770px;
-  top: 1px;
-  background: url(../../assets/doacao.png);
-  border-radius: 30px;
-  transform: rotate(-45.5deg);
-}
-
-.item1 {
-  width: 350px;
-  height: 250px;
-}
-
-.item2 {
-  /* Rectangle */
-  position: absolute;
   width: 100%;
-  height: 100%;
-  left: 820px;
-  top: 380px;
-  background: url(../../assets/dia-de-doar1.jpg), #E1E0ED;
-  border-radius: 30px;
-  transform: rotate(-46deg);
-}
-
-.item2 {
-  width: 350px;
-  height: 250px;
-}
-
-.item3 {
-  /* Rectangle */
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 1075.05px;
-  top: 178px;
-  background: url(../../assets/livros.png), #E1E0ED;
-  border-radius: 30px;
-  transform: rotate(43.5deg);
-}
-
-.item3 {
-  width: 350px;
-  height: 250px;
+  background-image: url('../../assets/img1.png');
+  background-repeat: no-repeat;
 }
 
 .buttons {
@@ -212,7 +164,6 @@ a {
 }
 
 .page p {
-  padding-left: 10%;
   font-size: 16px;
 }
 

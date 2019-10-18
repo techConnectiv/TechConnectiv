@@ -7,12 +7,14 @@ import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CadastroComponent } from './cadastro/cadastro.component';
+import { ParticlesComponent } from './particles/particles/particles.component';
+import { AuthGuardService } from './service/auth-guard.service';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: 'biography', component: BiografiaComponent },
-  { path: 'doubts', component: DoubtsComponent },
-  { path: 'info', component: InfoComponent },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuardService]},
+  { path: 'biography', component: BiografiaComponent, canActivate: [AuthGuardService] },
+  { path: 'doubts', component: DoubtsComponent, canActivate: [AuthGuardService] },
+  { path: 'info', component: InfoComponent, canActivate: [AuthGuardService] },
   { path: 'login', component: LoginComponent },
   { path: 'cadastro', component: CadastroComponent },
   { path: 'index', component: EstaticoComponent },

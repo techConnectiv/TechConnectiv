@@ -22,6 +22,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { EstaticoComponent } from './estatico/estatico.component';
 import { TextMaskModule } from 'angular2-text-mask';
 import { AuthService } from './service/auth.service';
+import { ParticlesComponent } from './particles/particles/particles.component';
+import { AuthGuardService } from './service/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { AuthService } from './service/auth.service';
     LoadingComponent,
     LayoutComponent,
     CadastroComponent,
-    EstaticoComponent
+    EstaticoComponent,
+    ParticlesComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +60,7 @@ import { AuthService } from './service/auth.service';
     MatOptionModule
   ],
   providers: [
-    AuthService
+    AuthService, AuthGuardService
   ],
   bootstrap: [AppComponent]
 })
