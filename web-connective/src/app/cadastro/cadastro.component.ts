@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { $ } from 'protractor';
+import { CustomerService } from '../service/user.service';
 
 export interface Sexo {
   viewValue: string;
@@ -39,7 +40,10 @@ export class CadastroComponent implements OnInit {
 
   isOptional = false;
 
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(
+    private _formBuilder: FormBuilder,
+    private customer: CustomerService
+    ) { }
 
   ngOnInit() {
     this.formDoador();
@@ -77,8 +81,7 @@ export class CadastroComponent implements OnInit {
       cpf: ['', Validators.required],
       dataNascimento: ['', Validators.required],
       sex: ['', Validators.required],
-      senha: ['', Validators.required],
-      repeteSenha: ['', Validators.required]
+      senha: ['', Validators.required]
     });
     this.secondFormDoador = this._formBuilder.group({
       cep: [''],
@@ -122,7 +125,10 @@ export class CadastroComponent implements OnInit {
       ]]
     });
   }
-  onSubmit(f) {
-    console.log(f);
+  onSubmit() {
+    this.customer.cadastrarUsuario(this.formDoador).subscribe(
+      data => console.log('Sucesso!', data),
+      error => console.log('Erro!', error)
+    )
   }
 }

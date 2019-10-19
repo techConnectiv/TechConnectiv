@@ -15,8 +15,8 @@ export class CustomerService {
     return this.http.get(`${this.baseUrl}/${id}`);
   }
 
-  cadastrarUsuario(User: Object): Observable<Object> {
-    return this.http.post(`${this.baseUrl}` + `/criar`, User);
+  cadastrarUsuario(user: Object): Observable<Object> {
+    return this.http.post(`${this.baseUrl}` + `/criar`, user);
   }
 
   updateUsuario(id: any, value: any): Observable<Object> {

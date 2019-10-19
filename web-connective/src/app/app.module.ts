@@ -24,6 +24,7 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { AuthService } from './service/auth.service';
 import { ParticlesComponent } from './particles/particles/particles.component';
 import { AuthGuardService } from './service/auth-guard.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { AuthGuardService } from './service/auth-guard.service';
     MatStepperModule,
     MatButtonModule,
     TextMaskModule,
-    MatOptionModule
+    MatOptionModule,
+    HttpClientModule
   ],
   providers: [
     AuthService, AuthGuardService
