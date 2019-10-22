@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { $ } from 'protractor';
+import { CustomerService } from '../service/user.service';
 
 export interface Sexo {
   viewValue: string;
@@ -13,15 +14,18 @@ export interface Sexo {
 })
 export class CadastroComponent implements OnInit {
   sexo: Sexo[] = [
-    {viewValue: 'M'},
-    {viewValue: 'F'}
+    { viewValue: 'M' },
+    { viewValue: 'F' },
+    { viewValue: 'Outros'}
   ];
 
   states: string[] = [
     'AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA',
     'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'
   ];
+
   public mask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  public cpfMask = [/[0-9]/, /[0-9]/, /[0-9]/, '.', /[0-9]/, /[0-9]/, /[0-9]/, '.', /[0-9]/, /[0-9]/, /[0-9]/, '-', /[0-9]/, /[0-9]/];
 
   firstFormEmpresa: FormGroup;
   secondFormEmpresa: FormGroup;
@@ -34,25 +38,28 @@ export class CadastroComponent implements OnInit {
   firstFormOng: FormGroup;
   secondFormOng: FormGroup;
   thirthFormOng: FormGroup;
-  
+
   isOptional = false;
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(
+    private _formBuilder: FormBuilder,
+    private customer: CustomerService
+    ) { }
 
   ngOnInit() {
-  this.formDoador();
-  this.formEmpresa();
-  this.formOng();
+    this.formDoador();
+    this.formEmpresa();
+    this.formOng();
   }
-formEmpresa(){
-  this.firstFormEmpresa = this._formBuilder.group({
-    nomeEmpresa: ['', Validators.required],
-    razaoSocial: [''],
-    cnpj: ['', Validators.required],
-    senha: ['', Validators.required],
-    repeteSenha: ['', Validators.required]
-  });
-  this.secondFormEmpresa = this._formBuilder.group({
+  formEmpresa() {
+    this.firstFormEmpresa = this._formBuilder.group({
+      nomeEmpresa: ['', Validators.required],
+      razaoSocial: [''],
+      cnpj: ['', Validators.required],
+      senha: ['', Validators.required],
+      repeteSenha: ['', Validators.required]
+    });
+    this.secondFormEmpresa = this._formBuilder.group({
       cep: [''],
       rua: [''],
       numero: [''],
@@ -60,24 +67,24 @@ formEmpresa(){
       bairro: [''],
       complemento: [''],
       referencia: ['']
-  });
-  this.thirthFormEmpresa = this._formBuilder.group({
-    telefone: [''],
-    celular: [''],
-    site: ['']
-});
-}
+    });
+    this.thirthFormEmpresa = this._formBuilder.group({
+      telefone: [''],
+      celular: [''],
+      site: ['']
+    });
 
-formDoador() {
-  this.firstFormDoador = this._formBuilder.group({
-    nome: ['', Validators.required],
-    cpf: ['', Validators.required],
-    dataNascimento: ['', Validators.required],
-    sex: ['', Validators.required],
-    senha: ['', Validators.required],
-    repeteSenha: ['', Validators.required]
-  });
-  this.secondFormDoador = this._formBuilder.group({
+  }
+  
+  formDoador() {
+    this.firstFormDoador = this._formBuilder.group({
+      nome: ['', Validators.required],
+      cpf: ['', Validators.required],
+      dataNascimento: ['', Validators.required],
+      sex: ['', Validators.required],
+      senha: ['', Validators.required]
+    });
+    this.secondFormDoador = this._formBuilder.group({
       cep: [''],
       rua: [''],
       numero: [''],
@@ -85,22 +92,22 @@ formDoador() {
       bairro: [''],
       complemento: [''],
       referencia: ['']
-  });
-  this.thirthFormDoador = this._formBuilder.group({
-    telefone: [''],
-    celular: [''],
-    email: ['']
-});
-}
+    });
+    this.thirthFormDoador = this._formBuilder.group({
+      telefone: [''],
+      celular: [''],
+      email: ['']
+    });
+  }
 
-formOng(){
-  this.firstFormOng = this._formBuilder.group({
-    nomeInstituicao: ['', Validators.required],
-    cnpj: ['', Validators.required],
-    senha: ['', Validators.required],
-    repeteSenha: ['', Validators.required]
-  });
-  this.secondFormOng = this._formBuilder.group({
+  formOng() {
+    this.firstFormOng = this._formBuilder.group({
+      nomeInstituicao: ['', Validators.required],
+      cnpj: ['', Validators.required],
+      senha: ['', Validators.required],
+      repeteSenha: ['', Validators.required]
+    });
+    this.secondFormOng = this._formBuilder.group({
       cep: [''],
       rua: [''],
       numero: [''],
@@ -108,18 +115,21 @@ formOng(){
       bairro: [''],
       complemento: [''],
       referencia: ['']
-  });
-  this.thirthFormOng = this._formBuilder.group({
-    telefone: [''],
-    celular: [''],
-    site: [''],
-    email: ['', [
-      Validators.required,
-      Validators.email,
-    ]]
-});
-}
+    });
+    this.thirthFormOng = this._formBuilder.group({
+      telefone: [''],
+      celular: [''],
+      site: [''],
+      email: ['', [
+        Validators.required,
+        Validators.email,
+      ]]
+    });
+  }
   onSubmit() {
-
+    this.customer.cadastrarUsuario(this.formDoador).subscribe(
+      data => console.log('Sucesso!', data),
+      error => console.log('Erro!', error)
+    )
   }
 }

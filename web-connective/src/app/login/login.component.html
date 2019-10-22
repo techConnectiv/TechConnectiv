@@ -1,3 +1,6 @@
+<app-particles>
+</app-particles>
+
 <div class="box">
   <div class="div-container">
     <h2>Bem - Vindo!</h2>
@@ -7,25 +10,25 @@
     <h1>Login</h1>
     <div class="usuario"></div>
 
-<!--     <form> -->
-      <div class="form">
-        <div class="exemple-container">
-          <mat-form-field>
-            <input [(ngModel)]="usuario.nome" matInput placeholder="Usuario" />
-          </mat-form-field>
+    <!--     <form> -->
+    <div class="form">
+      <div class="exemple-container">
+        <mat-form-field>
+          <input [(ngModel)]="usuario.nome" matInput placeholder="Usuario" />
+        </mat-form-field>
 
-          <mat-form-field>
-            <input type="password" [(ngModel)]="usuario.senha" matInput placeholder="Senha" />
-          </mat-form-field>
-        </div>
-
-        <input type="submit" value="Login" (click)="login()" />
-
-        <div class="container">
-          Não tem conta?<a href="#"><i> Cadastre-se </i></a><br />
-          <a href="#"> Esqueceu sua senha? </a>
-        </div>
+        <mat-form-field>
+          <input type="password" [(ngModel)]="usuario.senha" matInput placeholder="Senha" />
+        </mat-form-field>
       </div>
-<!--     </form> -->
+
+      <input type="submit" value="Login" (click)="login()" />
+
+      <div class="container">
+        Não tem conta?<a href="#"><i> Cadastre-se </i></a><br />
+        <a href="#"> Esqueceu sua senha? </a>
+      </div>
+    </div>
+    <!--     </form> -->
   </div>
 </div>

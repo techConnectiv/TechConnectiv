@@ -16,12 +16,17 @@ import { HomeComponent } from './home/home.component';
 import { BiografiaComponent } from './biografia/biografia.component';
 import { DoubtsComponent } from './doubts/doubts.component';
 import { InfoComponent } from './info/info.component';
-import { MenuComponent } from './menu/menu.component';
 import { MatProgressBarModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatTabsModule, MatStepperModule, MatButtonModule, MatOptionModule } from '@angular/material';
+import { MatDialogModule } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { EstaticoComponent } from './estatico/estatico.component';
 import { TextMaskModule } from 'angular2-text-mask';
 import { AuthService } from './service/auth.service';
+import { ParticlesComponent } from './particles/particles/particles.component';
+import { AuthGuardService } from './service/auth-guard.service';
+import { HttpClientModule } from '@angular/common/http';
+import { MaterializeModule } from 'angular2-materialize';
+import { ModalComponent } from './home/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -31,11 +36,12 @@ import { AuthService } from './service/auth.service';
     BiografiaComponent,
     DoubtsComponent,
     InfoComponent,
-    MenuComponent,
     LoadingComponent,
     LayoutComponent,
     CadastroComponent,
-    EstaticoComponent
+    EstaticoComponent,
+    ParticlesComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -54,10 +60,17 @@ import { AuthService } from './service/auth.service';
     MatStepperModule,
     MatButtonModule,
     TextMaskModule,
-    MatOptionModule
+    MatOptionModule,
+    MaterializeModule,
+    HttpClientModule,
+    MatDialogModule
+  ],
+  entryComponents: [
+    ModalComponent
   ],
   providers: [
-    AuthService
+    AuthService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,9 @@
+#particles-js {
+  max-height: 620px;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+#particles-js {
+  opacity: 0.6;
+}

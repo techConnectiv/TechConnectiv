@@ -14,6 +14,7 @@ export class LoginComponent {
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
+    
   }
 
   login(){
