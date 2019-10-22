@@ -11,7 +11,9 @@ export class AppComponent {
   title = 'techConnective';
 
   mostrar: boolean = false
-  constructor(private authService: AuthService) {
+  constructor(
+    private authService: AuthService
+    ) {
     
   }
 
@@ -19,5 +21,9 @@ export class AppComponent {
     this.authService.authEmitter.subscribe(
       isAuth => this.mostrar = isAuth
     );
+  }
+
+  ngOnDestroy() {
+    this.authService.logoff();
   }
 }

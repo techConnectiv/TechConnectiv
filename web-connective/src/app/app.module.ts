@@ -16,8 +16,7 @@ import { HomeComponent } from './home/home.component';
 import { BiografiaComponent } from './biografia/biografia.component';
 import { DoubtsComponent } from './doubts/doubts.component';
 import { InfoComponent } from './info/info.component';
-import { MenuComponent } from './menu/menu.component';
-import { MatProgressBarModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatTabsModule, MatStepperModule, MatButtonModule, MatOptionModule, MatDialogRef } from '@angular/material';
+import { MatProgressBarModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatTabsModule, MatStepperModule, MatButtonModule, MatOptionModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { EstaticoComponent } from './estatico/estatico.component';
@@ -37,7 +36,6 @@ import { ModalComponent } from './home/modal/modal.component';
     BiografiaComponent,
     DoubtsComponent,
     InfoComponent,
-    MenuComponent,
     LoadingComponent,
     LayoutComponent,
     CadastroComponent,

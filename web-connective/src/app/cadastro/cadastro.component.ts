@@ -15,7 +15,8 @@ export interface Sexo {
 export class CadastroComponent implements OnInit {
   sexo: Sexo[] = [
     { viewValue: 'M' },
-    { viewValue: 'F' }
+    { viewValue: 'F' },
+    { viewValue: 'Outros'}
   ];
 
   states: string[] = [

@@ -25,6 +25,11 @@ export class AuthService {
     }
   }
 
+  logoff(){
+    this.userAutenticate = false;
+    this.authEmitter.emit(false);
+  }
+
   Autenticate(){
     return this.userAutenticate
   }
