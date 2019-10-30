@@ -1,5 +1,5 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
-import { setTheme } from 'ngx-bootstrap';
 import { AuthService } from './service/auth.service';
 
 @Component({
@@ -12,12 +12,13 @@ export class AppComponent {
 
   mostrar: boolean = false
   constructor(
-    private authService: AuthService
-    ) {
-    
+    private authService: AuthService,
+    private router: Router
+  ) {
+
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.authService.authEmitter.subscribe(
       isAuth => this.mostrar = isAuth
     );

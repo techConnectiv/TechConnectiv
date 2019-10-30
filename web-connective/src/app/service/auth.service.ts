@@ -28,6 +28,7 @@ export class AuthService {
   logoff(){
     this.userAutenticate = false;
     this.authEmitter.emit(false);
+    this.router.navigate(["/index"]);
   }
 
   Autenticate(){
