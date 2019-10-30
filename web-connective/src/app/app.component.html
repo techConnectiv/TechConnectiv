@@ -1,91 +1,86 @@
-<app-layout>
-  <main>
-    <header>
-      <div id="nav">
-        <ul>
-          <li>
-              <img src="../../assets/logo.png" [routerLink]="['/index']" />
-          </li>
-          <li>
-              <h2>TechConnective</h2>
-          </li>
-        </ul>
-      </div>
-    </header>
+<mat-toolbar>
+  <img src="../../assets/logo.png" />
 
-    <!-- <div class="area"></div> -->
-    <nav class="main-menu" *ngIf="mostrar">
-      <ul>
-        <li>
-          <a
-            [routerLink]="['/home']"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exect: true }"
-          >
-            <i class="fa fa-home fa-2x"></i>
-            <span class="nav-text">
-              Inicio
-            </span>
-          </a>
-        </li>
+  <h2>TechConnective</h2>
+</mat-toolbar>
 
-        <li class="has-subnav">
-          <a [routerLink]="['/doubts']" routerLinkActive="active">
-            <i class="fa fa-info fa-2x"></i>
-            <span class="nav-text">
-              Como doar
-            </span>
-          </a>
-        </li>
+<nav class="main-menu" *ngIf="mostrar">
+  <ul>
+    <li>
+      <a
+        [routerLink]="['/home']"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exect: true }"
+      >
+        <i class="fa fa-home fa-2x"></i>
+        <span class="nav-text">
+          Inicio
+        </span>
+      </a>
+    </li>
 
-        <li>
-          <a href="#">
-            <i class="fa fa-bar-chart-o fa-2x"></i>
-            <span class="nav-text">
-              Minhas doações
-            </span>
-          </a>
-        </li>
+    <li class="has-subnav">
+      <a [routerLink]="['/doubts']" routerLinkActive="active">
+        <i class="fa fa-info fa-2x"></i>
+        <span class="nav-text">
+          Como doar
+        </span>
+      </a>
+    </li>
 
-        <li>
-          <a href="#">
-            <i class="fa fa-user fa-2x"></i>
-            <span class="nav-text">
-              Perfil
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fa fa-calendar fa-2x"></i>
-            <span class="nav-text">
-              Eventos
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fa fa-map-marker fa-2x"></i>
-            <span class="nav-text">
-              Encontrar
-            </span>
-          </a>
-        </li>
-        
-      </ul>
+    <li>
+      <a href="#">
+        <i class="fa fa-bar-chart-o fa-2x"></i>
+        <span class="nav-text">
+          Minhas doações
+        </span>
+      </a>
+    </li>
 
-      <ul class="logout">
-        <li>
-          <a [routerLink]="['/index']" routerLinkActive="active" (click)="authService.logout()">
-            <i class="fa fa-power-off fa-2x"></i>
-            <span class="nav-text">
-              Logout
-            </span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <app-loading></app-loading>
-    <router-outlet></router-outlet>
-  </main>
-</app-layout>
+    <li>
+      <a [routerLink]="['/doacao']">
+        <i class="fa fa-bar-chart-o fa-2x"></i>
+        <span class="nav-text">
+          Doar
+        </span>
+      </a>
+    </li>
+
+    <li>
+      <a href="#">
+        <i class="fa fa-user fa-2x"></i>
+        <span class="nav-text">
+          Perfil
+        </span>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <i class="fa fa-calendar fa-2x"></i>
+        <span class="nav-text">
+          Eventos
+        </span>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <i class="fa fa-map-marker fa-2x"></i>
+        <span class="nav-text">
+          Encontrar
+        </span>
+      </a>
+    </li>
+  </ul>
+
+  <ul class="logout">
+    <li>
+      <a routerLinkActive="active" (click)="authService.logoff()">
+        <i class="fa fa-power-off fa-2x"></i>
+        <span class="nav-text">
+          Logout
+        </span>
+      </a>
+    </li>
+  </ul>
+</nav>
+<router-outlet></router-outlet>

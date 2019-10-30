@@ -1,3 +1,4 @@
+import { DoacaoComponent } from './doacao/doacao.component';
 import { EstaticoComponent } from './estatico/estatico.component';
 import { LoginComponent } from './login/login.component';
 import { InfoComponent } from './info/info.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'cadastro', component: CadastroComponent },
   { path: 'index', component: EstaticoComponent },
+  { path: 'doacao', component: DoacaoComponent/* , canActivate: [AuthGuardService] */},
   { path: '', redirectTo: '/index', pathMatch: 'full' },
 ];
 

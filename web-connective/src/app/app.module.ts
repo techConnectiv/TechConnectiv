@@ -1,6 +1,4 @@
 import { CadastroComponent } from './cadastro/cadastro.component';
-import { LayoutComponent } from './layout/layout.component';
-import { LoadingComponent } from './loading/loading.component';
 import { MaterialModule } from './material/material.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -27,6 +25,8 @@ import { AuthGuardService } from './service/auth-guard.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterializeModule } from 'angular2-materialize';
 import { ModalComponent } from './home/modal/modal.component';
+import { DoacaoComponent } from './doacao/doacao.component';
+import { LayoutComponent } from './layout/layout.component';
 
 @NgModule({
   declarations: [
@@ -36,12 +36,12 @@ import { ModalComponent } from './home/modal/modal.component';
     BiografiaComponent,
     DoubtsComponent,
     InfoComponent,
-    LoadingComponent,
-    LayoutComponent,
     CadastroComponent,
     EstaticoComponent,
     ParticlesComponent,
-    ModalComponent
+    ModalComponent,
+    DoacaoComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,129 @@
-button {
+.section {
+    max-width: 1300px;
+    max-height: 600px;
+}
+
+.section {
+    position: absolute;
+    top: 54px;
+    left: 64px;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+}
+
+.header {
+    height: 40px;
+}
+
+.section .layout {
+    padding: 5px 50px;
+}
+
+.section .container {
+    border: 1px solid #9b9c9c;
+    width: 550px;
+    height: 230px;
+    float: left;
+    position: relative;
+}
+
+.container h3 {
     position: absolute;
     top: 50%;
     left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.section .header {
+    width: 100%;
+}
+
+.section .doar {
+    float: right;
+    margin-right: 50px;
+}
+
+.header h3 {
+    margin-left: 50px;
+}
+
+.header .doar {
+    z-index: 3;
+    background: transparent;
+    color: #1172c4;
+    font-size: 12px;
+    border-color: #1172c4;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 22px;
+    padding: 6px 15px;
+    text-transform: uppercase;
+    transition: all 0.2s linear;
+    margin-bottom: 10px;
+}
+
+.section .container2 {
+    border: 1px solid #9b9c9c;
+    width: 550px;
+    height: 230px;
+    float: left;
+    position: relative;
+    margin-left: 80px;
+}
+
+.container2 h3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.section .container3 {
+    margin-top: 20px;
+    border: 1px solid #9b9c9c;
+    width: 550px;
+    height: 150px;
+    float: left;
+    position: relative;
+}
+
+.container3 h3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.section .container4 {
+    border: 1px solid #9b9c9c;
+    width: 550px;
+    height: 150px;
+    float: left;
+    position: relative;
+    margin-left: 80px;
+    margin-top: 20px;
+}
+
+.container4 h3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.section .container5 {
+    border: 1px solid #9b9c9c;
+    width: 1180px;
+    height: 110px;
+    float: left;
+    position: relative;
+    margin-top: 20px;
+}
+
+.container5 h3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
