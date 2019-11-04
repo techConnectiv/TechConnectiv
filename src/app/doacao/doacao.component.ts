@@ -1,3 +1,4 @@
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 declare var $: any;
@@ -9,12 +10,27 @@ declare var $: any;
 })
 export class DoacaoComponent implements OnInit {
 
-  constructor() { }
+  form: FormGroup;
+
+  constructor(
+    private fb: FormBuilder
+  ) { }
 
   ngOnInit() {
+    this.jQuery();
+    this.initForm();
+  }
 
+  initForm() {
+    this.form = this.fb.group({
+      alimento: '',
+      higiene: '',
+      brinquedo: '',
+      roupa: ''
+    });
+  }
 
-    //jQuery time
+  jQuery() {
     var current_fs, next_fs, previous_fs; //fieldsets
     var left, opacity, scale; //fieldset properties which we will animate
     var animating; //flag to prevent quick multi-click glitches

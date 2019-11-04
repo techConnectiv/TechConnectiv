@@ -1,13 +1,15 @@
 /*custom font*/
-@import url(https://fonts.googleapis.com/css?family=Montserrat);
 
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
 /*basic reset*/
+
 * {
     margin: 0;
     padding: 0;
 }
 
 /*form styles*/
+
 #msform {
     text-align: center;
     position: relative;
@@ -23,17 +25,18 @@
     box-sizing: border-box;
     width: 50%;
     margin: 0 25%;
-
     /*stacking fieldsets above each other*/
     position: relative;
 }
 
 /*Hide all except first fieldset*/
+
 #msform fieldset:not(:first-of-type) {
     display: none;
 }
 
 /*inputs*/
+
 #msform input, #msform textarea {
     padding: 15px;
     border: 1px solid #ccc;
@@ -59,6 +62,7 @@
 }
 
 /*buttons*/
+
 #msform .action-button {
     width: 100px;
     background: #ee0979;
@@ -92,6 +96,7 @@
 }
 
 /*headings*/
+
 .fs-title {
     font-size: 18px;
     text-transform: uppercase;
@@ -109,6 +114,7 @@
 }
 
 /*progressbar*/
+
 #progressbar {
     margin-bottom: 30px;
     overflow: hidden;
@@ -142,6 +148,7 @@
 }
 
 /*progressbar connectors*/
+
 #progressbar li:after {
     content: '';
     width: 100%;
@@ -150,7 +157,8 @@
     position: absolute;
     left: -50%;
     top: 9px;
-    z-index: -1; /*put it behind the numbers*/
+    z-index: -1;
+    /*put it behind the numbers*/
 }
 
 #progressbar li:first-child:after {
@@ -159,18 +167,21 @@
 }
 
 /*marking active/completed steps green*/
+
 /*The number of the step and the connector before it = green*/
+
 #progressbar li.active:before, #progressbar li.active:after {
     background: #ee0979;
     color: white;
 }
 
-
 /* Not relevant to this form */
+
 .dme_link {
     margin-top: 30px;
     text-align: center;
 }
+
 .dme_link a {
     background: #FFF;
     font-weight: bold;
@@ -186,13 +197,13 @@
     background: #C5C5F1;
     text-decoration: none;
 }
+
 .container {
     width: 100%;
     position: relative;
     display: flex;
     justify-content: space-between;
 }
-
 
 .container .card {
     position: relative;
@@ -212,6 +223,7 @@
     align-items: center;
     z-index: 1;
     transform: translateY(80px);
+    border-radius: 10px;
 }
 
 .container .card:hover .face.face1 {
@@ -219,21 +231,20 @@
     transform: translateY(0);
 }
 
-
-.container .card .face.face1 .content{
+.container .card .face.face1 .content {
     opacity: 0.2;
     transition: .5s;
 }
 
-.container .card:hover .face.face1 .content{
+.container .card:hover .face.face1 .content {
     opacity: 1;
 }
 
-.container .card .face.face1 .content img{
+.container .card .face.face1 .content img {
     max-width: 100px;
 }
 
-.container .card .face.face1 .content h3{
+.container .card .face.face1 .content h3 {
     margin: 10px 0 0;
     padding: 0;
     color: #333;
@@ -254,7 +265,7 @@
     border-radius: 10px;
 }
 
-.container .card:hover .face.face2{
+.container .card:hover .face.face2 {
     transform: translateY(0);
 }
 
@@ -264,7 +275,7 @@
     font-size: 0.9em;
 }
 
-.container .card .face.face2 .content input{
+.container .card .face.face2 .content input {
     margin: 15px 0 0;
     color: #fff!important;
     display: inline-block;
@@ -277,4 +288,48 @@
 .container .card .face.face2 .content input:hover {
     background: #fff;
     color: #333!important;
+}
+
+input[type=radio] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* IMAGE STYLES */
+
+input[type=radio] + div {
+    cursor: pointer;
+}
+
+/* CHECKED STYLES */
+
+input[type=radio]:checked + div {
+    outline: 2px solid #f00;
+}
+
+.btnVoltar {
+    z-index: 3;
+    background: transparent;
+    color: #1172c4;
+    font-size: 10px;
+    border-color: #1172c4;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 22px;
+    padding: 6px 15px;
+    text-transform: uppercase;
+    transition: all 0.2s linear;
+    margin-bottom: 10px;
+}
+
+.btnVoltar:hover {
+  color: white;
+  background: #1172c4;
+  border-color: white;
+  transition: all 0.2s linear;
+}
+.btnVoltar:active {
+  border-radius: 22px;
 }
