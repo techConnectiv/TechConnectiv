@@ -5,6 +5,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatRadioModule } from '@angular/material/radio';
 
 import { NgModule } from '@angular/core';
 
@@ -63,7 +64,8 @@ import { LayoutComponent } from './layout/layout.component';
     MatOptionModule,
     MaterializeModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    MatRadioModule
   ],
   entryComponents: [
     ModalComponent
