@@ -39,28 +39,8 @@
     width: 100%;
 }
 
-.section .doar {
-    float: right;
-    margin-right: 50px;
-}
-
 .header h3 {
     margin-left: 50px;
-}
-
-.header .doar {
-    z-index: 3;
-    background: transparent;
-    color: #1172c4;
-    font-size: 12px;
-    border-color: #1172c4;
-    border-style: solid;
-    border-width: 2px;
-    border-radius: 22px;
-    padding: 6px 15px;
-    text-transform: uppercase;
-    transition: all 0.2s linear;
-    margin-bottom: 10px;
 }
 
 .section .container2 {

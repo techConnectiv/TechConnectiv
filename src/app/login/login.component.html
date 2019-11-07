@@ -25,7 +25,8 @@
       <input type="submit" value="Login" (click)="login()" />
 
       <div class="container">
-        Não tem conta?<a href="#"><i> Cadastre-se </i></a><br />
+        Não tem conta?<a [routerLink]="['/cadastro']"><i> Cadastre-se </i></a>
+        <br />
         <a href="#"> Esqueceu sua senha? </a>
       </div>
     </div>

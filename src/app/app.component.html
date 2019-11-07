@@ -1,7 +1,19 @@
-<mat-toolbar>
+<!-- <mat-toolbar>
+  
   <img src="../../assets/logo.png" />
 
   <h2>TechConnective</h2>
+
+  <button class="doar" [routerLink]="['/doacao']">Doar</button>
+</mat-toolbar> -->
+
+<mat-toolbar>
+  <img src="../../assets/logo.png" />
+  &nbsp;
+  &nbsp;
+  <span>TechConnective</span>
+  <span class="example-spacer"></span>
+  <button class="doar" [routerLink]="['/doacao']">Doar</button>
 </mat-toolbar>
 
 <nav class="main-menu" *ngIf="mostrar">
