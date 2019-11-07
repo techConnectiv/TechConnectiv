@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AuthService } from './service/auth.service';
+import { ThemePalette } from '@angular/material';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,10 @@ import { AuthService } from './service/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  @Input()
+  color: ThemePalette
+
   title = 'techConnective';
 
   mostrar: boolean = false

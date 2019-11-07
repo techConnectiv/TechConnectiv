@@ -16,7 +16,7 @@ export class CadastroComponent implements OnInit {
   sexo: Sexo[] = [
     { viewValue: 'M' },
     { viewValue: 'F' },
-    { viewValue: 'Outros'}
+    { viewValue: 'Outros' }
   ];
 
   states: string[] = [
@@ -44,7 +44,7 @@ export class CadastroComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     private customer: CustomerService
-    ) { }
+  ) { }
 
   ngOnInit() {
     this.formDoador();
@@ -56,13 +56,17 @@ export class CadastroComponent implements OnInit {
       nomeEmpresa: ['', Validators.required],
       razaoSocial: [''],
       cnpj: ['', Validators.required],
-      senha: ['', Validators.required],
+      credencial: this._formBuilder.group({
+        login: ['', Validators.required],
+        senha: ['', Validators.required]
+      }),
       repeteSenha: ['', Validators.required]
     });
     this.secondFormEmpresa = this._formBuilder.group({
       cep: [''],
       rua: [''],
       numero: [''],
+      uf: [''],
       cidade: [''],
       bairro: [''],
       complemento: [''],
@@ -71,23 +75,27 @@ export class CadastroComponent implements OnInit {
     this.thirthFormEmpresa = this._formBuilder.group({
       telefone: [''],
       celular: [''],
-      site: ['']
+      email: ['']
     });
 
   }
-  
+
   formDoador() {
     this.firstFormDoador = this._formBuilder.group({
       nome: ['', Validators.required],
       cpf: ['', Validators.required],
       dataNascimento: ['', Validators.required],
       sex: ['', Validators.required],
-      senha: ['', Validators.required]
+      credencial: this._formBuilder.group({
+        login: ['', Validators.required],
+        senha: ['', Validators.required]
+      })
     });
     this.secondFormDoador = this._formBuilder.group({
       cep: [''],
       rua: [''],
       numero: [''],
+      uf: [''],
       cidade: [''],
       bairro: [''],
       complemento: [''],
@@ -104,13 +112,17 @@ export class CadastroComponent implements OnInit {
     this.firstFormOng = this._formBuilder.group({
       nomeInstituicao: ['', Validators.required],
       cnpj: ['', Validators.required],
-      senha: ['', Validators.required],
+      credencial: this._formBuilder.group({
+        login: ['', Validators.required],
+        senha: ['', Validators.required]
+      }),
       repeteSenha: ['', Validators.required]
     });
     this.secondFormOng = this._formBuilder.group({
       cep: [''],
       rua: [''],
       numero: [''],
+      uf: [''],
       cidade: [''],
       bairro: [''],
       complemento: [''],
@@ -119,7 +131,6 @@ export class CadastroComponent implements OnInit {
     this.thirthFormOng = this._formBuilder.group({
       telefone: [''],
       celular: [''],
-      site: [''],
       email: ['', [
         Validators.required,
         Validators.email,

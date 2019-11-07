@@ -1,4 +1,4 @@
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 declare var $: any;
@@ -11,6 +11,7 @@ declare var $: any;
 export class DoacaoComponent implements OnInit {
 
   form: FormGroup;
+  modelName: any;
 
   constructor(
     private fb: FormBuilder
@@ -23,10 +24,10 @@ export class DoacaoComponent implements OnInit {
 
   initForm() {
     this.form = this.fb.group({
-      alimento: '',
-      higiene: '',
+      tipo: new FormControl('')
+/*       higiene: '',
       brinquedo: '',
-      roupa: ''
+      roupa: '' */
     });
   }
 
