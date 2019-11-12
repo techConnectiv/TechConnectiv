@@ -13,7 +13,7 @@
   &nbsp;
   <span>TechConnective</span>
   <span class="example-spacer"></span>
-  <button class="doar" [routerLink]="['/doacao']">Doar</button>
+  <button *ngIf="mostrar" class="doar" [routerLink]="['/doacao']">Doar</button>
 </mat-toolbar>
 
 <nav class="main-menu" *ngIf="mostrar">

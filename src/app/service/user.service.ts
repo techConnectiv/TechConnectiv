@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class CustomerService {
 
-  private baseUrl = 'http://techconnective.azurewebsites.net/api/usuario';
+  private baseUrl = 'https://techconn.herokuapp.com/api';
 
   constructor(private http: HttpClient) { }
 
@@ -16,10 +16,14 @@ export class CustomerService {
   }
 
   cadastrarUsuario(user: Object): Observable<Object> {
-    return this.http.post(`${this.baseUrl}` + `/criar`, user);
+    return this.http.post(`${this.baseUrl}` + `/usuario/criar`, user);
   }
 
   updateUsuario(id: any, value: any): Observable<Object> {
     return this.http.put(`${this.baseUrl}/${id}`, value);
+  }
+
+  empresaCriar(user: Object): Observable<Object> {
+    return this.http.post(`${this.baseUrl}`+ `/empresa/criar`, user); 
   }
 }

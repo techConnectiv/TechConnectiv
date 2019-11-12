@@ -279,35 +279,35 @@ form {
 }
 
 input[type="submit"]{
-  margin-left: 0.5em;
-  height: 40px;
-  padding: 0.1em 1em 0.2em 2.90em;
-  font-size: 0.75em;
+  width: 100px;
+  background: #ee0979;
   font-weight: bold;
-  font-family: "Open Sans";
-  text-transform: uppercase;
-  color: #696666;
-  background: url(https://i.imgur.com/Th606mh.png) no-repeat scroll 0.75em 0.07em transparent;
-  background-size: 15px 60px;
-  border-radius: 2em;
-  border: 0.15em solid #F9C23C;
+  color: white;
+  border: 0 none;
+  border-radius: 25px;
   cursor: pointer;
-  transition: all 0.3s ease 0s;
+  padding: 10px 5px;
+  margin: 10px 5px;
 }
-input[type="submit"]:hover {
-    color: #fff;
-    background-color: #EAA502;
-    border-color: #EAA502;
-    background-position: 0.75em bottom;
-    -webkit-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    transition: all 0.3s ease;
+
+input[type="submit"]:hover, input[type="submit"]:focus {
+  box-shadow: 0 0 0 2px white, 0 0 0 3px #ee0979;
 }
-input[type="submit"]:focus {
-    background-position: 2em -5em;
-    -webkit-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    transition: all 0.3s ease;
+
+.button{
+  width: 100px;
+  background: #ee0979;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 25px;
+  cursor: pointer;
+/*   padding: 10px 5px;*/
+  margin: 10px 5px; 
+}
+
+.button:hover, .button:focus {
+  box-shadow: 0 0 0 2px white, 0 0 0 3px #ee0979;
 }
 /* Webfonts */
 

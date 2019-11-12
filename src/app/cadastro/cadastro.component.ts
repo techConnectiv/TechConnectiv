@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { $ } from 'protractor';
 import { CustomerService } from '../service/user.service';
 
@@ -137,10 +137,12 @@ export class CadastroComponent implements OnInit {
       ]]
     });
   }
-  onSubmit() {
-    this.customer.cadastrarUsuario(this.formDoador).subscribe(
+
+
+  onSubmit(f: NgForm) {
+      this.customer.empresaCriar(this.formEmpresa).subscribe(
       data => console.log('Sucesso!', data),
-      error => console.log('Erro!', error)
-    )
-  }
+      error => console.log('Erro!', error),
+      )
+    }
 }

@@ -18,7 +18,7 @@ export class LoginComponent {
   }
 
   login(){
-    //console.log(this.usuario);
+
     this.authService.login(this.usuario);
   }
 

@@ -8,7 +8,6 @@ import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CadastroComponent } from './cadastro/cadastro.component';
-import { ParticlesComponent } from './particles/particles/particles.component';
 import { AuthGuardService } from './service/auth-guard.service';
 
 const routes: Routes = [

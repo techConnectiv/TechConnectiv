@@ -51,7 +51,7 @@
           <form
             [formGroup]="firstFormEmpresa"
             #f="ngForm"
-            (onSubmit)="onSubmit(f)"
+            (ngSubmit)="onSubmit(f)"
           >
             <ng-template matStepLabel>Pessoal</ng-template>
             <mat-form-field>
@@ -111,9 +111,10 @@
               />
             </mat-form-field>
             <div>
-              <button mat-button matStepperNext>Next</button>
+              <button mat-button class="button" matStepperNext>Next</button>
             </div>
           </form>
+
         </mat-step>
         <mat-step [stepControl]="secondFormEmpresa">
           <form [formGroup]="secondFormEmpresa">
@@ -132,7 +133,7 @@
             &nbsp;
             <mat-form-field>
               <mat-label>UF</mat-label>
-              <mat-select>
+              <mat-select  formControlName="uf">
                 <mat-option *ngFor="let item of states" [value]="item">
                   {{ item }}
                 </mat-option>
@@ -163,8 +164,8 @@
               />
             </mat-form-field>
             <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Next</button>
+              <button mat-button class="button" matStepperPrevious>Back</button>
+              <button mat-button class="button" matStepperNext>Next</button>
             </div>
           </form>
         </mat-step>
@@ -188,13 +189,19 @@
             </mat-form-field>
             <div>
               <div class="send">
+                  <button mat-button class="button" matStepperPrevious>Back</button>
                 <input matStepperNext value="Proximo" type="submit" />
               </div>
             </div>
+            
           </form>
         </mat-step>
       </mat-horizontal-stepper>
     </section>
+<!--     <pre> {{ firstFormEmpresa.value | json }}
+      {{ secondFormEmpresa.value | json }}
+      {{ thirthFormEmpresa.value | json }}
+    </pre> -->
     <section>
       <h2>Usuario comum</h2>
       <mat-horizontal-stepper linear #stepper>
