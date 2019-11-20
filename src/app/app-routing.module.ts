@@ -17,9 +17,10 @@ const routes: Routes = [
   { path: 'info', component: InfoComponent, canActivate: [AuthGuardService] },
   { path: 'login', component: LoginComponent },
   { path: 'cadastro', component: CadastroComponent },
-  { path: 'index', component: EstaticoComponent },
+  { path: '', component: EstaticoComponent },
   { path: 'doacao', component: DoacaoComponent/* , canActivate: [AuthGuardService] */},
-  { path: '', redirectTo: '/index', pathMatch: 'full' },
+  /* { path: '', redirectTo: '/index', pathMatch: 'full' }, */
+  { path: '**', redirectTo: ''}
 ];
 
 @NgModule({

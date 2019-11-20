@@ -1,6 +1,8 @@
+import { CustomerService } from './service/user.service';
+import { User } from './login/usuario';
+import { LoginComponent } from './login/login.component';
 import { Router } from '@angular/router';
 import { Component, Input } from '@angular/core';
-import { AuthService } from './service/auth.service';
 import { ThemePalette } from '@angular/material';
 
 @Component({
@@ -15,21 +17,17 @@ export class AppComponent {
 
   title = 'techConnective';
 
-  mostrar: boolean = false
+  currentUser: User;
+
   constructor(
-    private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private customerService: CustomerService
   ) {
-
+    this.customerService.currentUser.subscribe(x => this.currentUser = x);
   }
 
-  ngOnInit() {
-    this.authService.authEmitter.subscribe(
-      isAuth => this.mostrar = isAuth
-    );
-  }
-
-  ngOnDestroy() {
-    this.authService.logoff();
-  }
+/*   logout() {
+    this.customerService.logout();
+    this.router.navigate(['/login']);
+  } */
 }

@@ -1,25 +1,74 @@
+import { CustomerService } from './../service/user.service';
+import { AlertService } from './../service/alert.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../service/auth.service';
-import { Usuario } from './usuario';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
-  private usuario: Usuario = new Usuario();
+  loginUser: FormGroup;
+  loading = false;
+  submitted = false;
+  returnUrl: string;
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private alertService: AlertService,
+    private customerService: CustomerService
+  ) {
+    if (this.customerService.currentUserValue) {
+      this.router.navigate(['/home']);
+    }
+  }
+
+
+
 
   ngOnInit() {
+
+    this.loginUser = this.fb.group({
+      login: ['', Validators.required],
+      senha: ['', Validators.required]
+    });
+
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
+
+  }
+  get f() { return this.loginUser.controls; }
+
+  onSubmit() {
+
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.loginUser.invalid) {
+      return;
+    }
+
+    this.loading = true;
+
+    console.log(this.loginUser.value)
     
-  }
+   /*  this.customerService.login(this.f.login.value, this.f.senha.value)
+      .subscribe(
+        data => {
 
-  login(){
+          this.router.navigate([this.returnUrl])
 
-    this.authService.login(this.usuario);
-  }
-
+        },
+        error => {
+          this.alertService.error(error);
+          this.loading = false;
+        });
+  } */
+  this.customerService.login(this.f.login.value, this.f.senha.value).subscribe(data => console.log(data))
+}
 }

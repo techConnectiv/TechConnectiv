@@ -9,34 +9,57 @@
     <h1>Login</h1>
     <div class="usuario"></div>
 
-    <!--     <form> -->
-    <div class="form">
-      <div class="exemple-container">
-        <mat-form-field>
-          <input [(ngModel)]="usuario.nome" matInput placeholder="Usuario" />
-        </mat-form-field>
+    <form [formGroup]="loginUser" (ngSubmit)="onSubmit()">
+      <div class="form">
+        <div class="exemple-container">
+          <mat-form-field>
+            <input
+              formControlName="login"
+              matInput
+              placeholder="Usuario"
+              [ngClass]="{ 'is-invalid': submitted && f.login.errors }"
+            />
+            <div *ngIf="submitted && f.login.errors" class="invalid-feedback">
+              <div *ngIf="f.login.errors.required">Username is required</div>
+            </div>
+          </mat-form-field>
 
-        <mat-form-field>
+          <mat-form-field>
+            <input
+              type="password"
+              formControlName="senha"
+              matInput
+              placeholder="Senha"
+              [ngClass]="{ 'is-invalid': submitted && f.senha.errors }"
+            />
+            <div *ngIf="submitted && f.senha.errors" class="invalid-feedback">
+              <div *ngIf="f.senha.errors.required">Password is required</div>
+            </div>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
           <input
-            type="password"
-            [(ngModel)]="usuario.senha"
-            matInput
-            placeholder="Senha"
+            type="submit"
+            value="Login"
+            [disabled]="loading"
+            class="btn btn-primary"
           />
-        </mat-form-field>
+          <img
+            *ngIf="loading"
+            src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+          />
+        </div>
       </div>
+    </form>
 
-      <input type="submit" value="Login" (click)="login()" />
+    <br />
+    <br />
 
-      <br>
-      <br>
-
-      <div class="container">
-        Não tem conta?<a [routerLink]="['/cadastro']"><i> Cadastre-se </i></a>
-        <br />
-        <a href="#"> Esqueceu sua senha? </a>
-      </div>
+    <div class="container">
+      Não tem conta?<a [routerLink]="['/cadastro']"><i> Cadastre-se </i></a>
+      <br />
+      <a href="#"> Esqueceu sua senha? </a>
     </div>
-    <!--     </form> -->
   </div>
 </div>
