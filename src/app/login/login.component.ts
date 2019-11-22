@@ -1,9 +1,9 @@
 import { CustomerService } from './../service/user.service';
-import { AlertService } from './../service/alert.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -15,19 +15,12 @@ export class LoginComponent implements OnInit {
   loginUser: FormGroup;
   loading = false;
   submitted = false;
-  returnUrl: string;
 
   constructor(
     private fb: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router,
-    private alertService: AlertService,
+    private snackbar: MatSnackBar,
     private customerService: CustomerService
-  ) {
-    if (this.customerService.currentUserValue) {
-      this.router.navigate(['/home']);
-    }
-  }
+  ) {  }
 
 
 
@@ -39,8 +32,7 @@ export class LoginComponent implements OnInit {
       senha: ['', Validators.required]
     });
 
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
-
+    this.customerService.logout();
   }
   get f() { return this.loginUser.controls; }
 
@@ -57,18 +49,19 @@ export class LoginComponent implements OnInit {
 
     console.log(this.loginUser.value)
     
-   /*  this.customerService.login(this.f.login.value, this.f.senha.value)
+    this.customerService.login(this.f.login.value, this.f.senha.value)
       .subscribe(
         data => {
 
-          this.router.navigate([this.returnUrl])
-
+          this.loading = false;
         },
         error => {
-          this.alertService.error(error);
           this.loading = false;
+
+          this.snackbar.open('Login ou senha inválidos...', 'Fechar',{
+            duration: 2000
+          });
+          
         });
-  } */
-  this.customerService.login(this.f.login.value, this.f.senha.value).subscribe(data => console.log(data))
-}
+  }
 }

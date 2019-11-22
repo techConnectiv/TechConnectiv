@@ -131,6 +131,7 @@
                   placeholder="CEP"
                   formControlName="cep"
                   required
+                  id="cep"
                 />
               </mat-form-field>
               &nbsp;
@@ -140,6 +141,7 @@
                   placeholder="Rua"
                   formControlName="rua"
                   required
+                  id="endereco"
                 />
               </mat-form-field>
               &nbsp;
@@ -153,12 +155,19 @@
               </mat-form-field>
               &nbsp;
               <mat-form-field>
-                <mat-label>UF</mat-label>
-                <mat-select formControlName="uf" required>
+                  <input
+                  matInput
+                  placeholder="Estado"
+                  formControlName="uf"
+                  required
+                  id="estado"
+                />
+<!--                 <mat-label>UF</mat-label>
+                <mat-select formControlName="uf" required id="estado">
                   <mat-option *ngFor="let item of states" [value]="item">
                     {{ item }}
                   </mat-option>
-                </mat-select>
+                </mat-select> -->
               </mat-form-field>
               &nbsp;
               <mat-form-field>
@@ -167,6 +176,7 @@
                   placeholder="Cidade"
                   formControlName="cidade"
                   required
+                  id="cidade"
                 />
               </mat-form-field>
               &nbsp;
@@ -176,6 +186,7 @@
                   placeholder="Bairro"
                   formControlName="bairro"
                   required
+                  id="bairro"
                 />
               </mat-form-field>
               &nbsp;
@@ -216,6 +227,7 @@
               <mat-form-field>
                 <input
                   matInput
+                  
                   placeholder="Telefone"
                   formControlName="telefone"
                   required
@@ -225,6 +237,7 @@
               <mat-form-field>
                 <input
                   matInput
+                  mask="(99) 9 9999-9999"
                   placeholder="Celular"
                   formControlName="celular"
                   required
@@ -442,6 +455,7 @@
                 <mat-form-field>
                   <input
                     matInput
+                    mask="(99) 9999-9999"
                     placeholder="Telefone"
                     formControlName="telefone"
                     required
@@ -451,6 +465,7 @@
                 <mat-form-field>
                   <input
                     matInput
+                    mask="(99) 9 9999-9999"
                     placeholder="Celular"
                     formControlName="celular"
                     required
@@ -647,6 +662,7 @@
                 <mat-form-field>
                   <input
                     matInput
+                    mask="(99) 9999-9999"
                     placeholder="Telefone"
                     formControlName="telefone"
                     required
@@ -656,6 +672,7 @@
                 <mat-form-field>
                   <input
                     matInput
+                    mask="(99) 9 9999-9999"
                     placeholder="Celular"
                     formControlName="celular"
                     required

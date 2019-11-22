@@ -48,36 +48,37 @@ export class CadastroComponent implements OnInit {
     this.formEmpresa();
     this.formOng();
     this.jQuery();
+    this.consultaCep();
   }
 
   formEmpresa() {
     this.firstFormEmpresa = this._formBuilder.group({
 
-      nomeEmpresa: ['askh', Validators.required],
-      razaoSocial: ['assd'],
-      cnpj: ['asddasdas', Validators.required],
+      nomeEmpresa: ['', Validators.required],
+      razaoSocial: [''],
+      cnpj: ['', Validators.required],
       credenciais: this._formBuilder.group({
-        login: ['asdasdas', [
+        login: ['', [
           Validators.required,
           Validators.email,
         ]],
-        senha: ['sadasdasd', Validators.required]
+        senha: ['', Validators.required]
       }),
-      repeteSenha: ['asdasd', Validators.required],
+      repeteSenha: ['', Validators.required],
       endereco: this._formBuilder.group({
-        cep: ['asdasd', Validators.required],
-        rua: ['asdasds', Validators.required],
-        numero: ['adasdasd', Validators.required],
-        uf: ['sadsa', Validators.required],
-        cidade: ['sadas', Validators.required],
-        bairro: ['asdasd', Validators.required],
-        complemento: ['asdsad'],
-        referencia: ['asdas']
+        cep: ['', Validators.required],
+        rua: ['', Validators.required],
+        numero: ['', Validators.required],
+        uf: ['', Validators.required],
+        cidade: ['', Validators.required],
+        bairro: ['', Validators.required],
+        complemento: [''],
+        referencia: ['']
       }),
       contato: this._formBuilder.group({
-        telefone: ['asdsad', Validators.required],
-        celular: ['asdasd', Validators.required],
-        email: ['asdasda', [
+        telefone: ['', Validators.required],
+        celular: ['', Validators.required],
+        email: ['', [
           Validators.required,
           Validators.email,
         ]]
@@ -156,15 +157,15 @@ export class CadastroComponent implements OnInit {
 
   onSubmit(f: NgForm) {
 
-     this.customer.empresaCriar(this.firstFormEmpresa.value)
+    this.customer.empresaCriar(this.firstFormEmpresa.value)
       .subscribe(
         data =>
           //this.openSnackBar(),
           console.log(data),
         error => console.log('Erro!', error),
-      ) 
-      
-      
+      )
+
+
   }
 
   doadorSubmit(d: NgForm) {
@@ -275,5 +276,25 @@ export class CadastroComponent implements OnInit {
       return false;
     })
 
+  }
+
+  consultaCep() {
+    $("#cep").change(function () {
+      var cep_code = $(this).val();
+      if (cep_code.length <= 0) return;
+      $.get("http://apps.widenet.com.br/busca-cep/api/cep.json", { code: cep_code },
+        function (result) {
+          if (result.status != 1) {
+            alert(result.message || "Houve um erro desconhecido");
+            return;
+          }
+          $("input#cep").val(result.code);
+          $("input#estado").val(result.state);
+          $("input#cidade").val(result.city);
+          $("input#bairro").val(result.district);
+          $("input#endereco").val(result.address);
+          $("input#estado").val(result.state);
+        });
+    })
   }
 }

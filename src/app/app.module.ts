@@ -27,7 +27,6 @@ import { MaterializeModule } from 'angular2-materialize';
 import { ModalComponent } from './home/modal/modal.component';
 import { DoacaoComponent } from './doacao/doacao.component';
 import { LayoutComponent } from './layout/layout.component';
-import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -42,8 +41,7 @@ import { AlertComponent } from './alert/alert.component';
     ParticlesComponent,
     ModalComponent,
     DoacaoComponent,
-    LayoutComponent,
-    AlertComponent
+    LayoutComponent
   ],
   imports: [
     BrowserModule,

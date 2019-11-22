@@ -9,20 +9,31 @@
       </ul>
       <!-- fieldsets -->
       <fieldset>
+        <button class="btnVoltar" [routerLink]="['/home']">Cancelar</button>
+        <h2 class="fs-title">O que vai doar?</h2>
+        <h3 class="fs-subtitle">Selecione uma opção:</h3>
+
         <div class="container">
-          <input type="radio" id="i1" formControlName="tipo" value="alimento" />
-          <label for="i1"><img src="../../assets/face1.jpg" alt=""/></label>
+          <mat-radio-group formControlName="tipo">
+            <mat-radio-button id="i1" value="alimento">
+              <label for="i1"
+                ><img src="../../assets/face1.jpg" alt="" matTooltip="Alimento"
+              /></label>
+            </mat-radio-button>
+          </mat-radio-group>
+          <!--           <input type="radio" id="i1" formControlName="tipo" value="alimento" />
+          <label for="i1"><img src="../../assets/face1.jpg" alt="" matTooltip="Alimento"/></label>
           <input type="radio" id="i2" formControlName="tipo" value="roupa" />
-          <label for="i2"><img src="../../assets/face2.jpg" alt=""/></label>
+          <label for="i2"><img src="../../assets/face2.jpg" alt="" matTooltip="Roupa"/></label>
           <input type="radio" id="i3" formControlName="tipo" value="higiene" />
-          <label for="i3"><img src="../../assets/face3.jpg" alt=""/></label>
+          <label for="i3"><img src="../../assets/face3.jpg" alt="" matTooltip="Higiene"/></label>
           <input
             type="radio"
             id="i4"
             formControlName="tipo"
             value="brinquedo"
           />
-          <label for="i4"><img src="../../assets/face4.jpg" alt=""/></label>
+          <label for="i4"><img src="../../assets/face4.jpg" alt="" matTooltip="Brinquedo"/></label> -->
         </div>
         <input
           type="button"
@@ -30,32 +41,20 @@
           class="next action-button"
           value="Next"
         />
-        <button class="btnVoltar" [routerLink]="['/home']">Cancelar</button>
       </fieldset>
       <fieldset>
+        <button class="btnVoltar" [routerLink]="['/home']">Cancelar</button>
         <h2 class="fs-title">Para qual Ong dejesa doar?</h2>
         <h3 class="fs-subtitle">Selecione uma:</h3>
 
         <div class="container">
-<!--           <div *ngFor="let item of listDoacao" >
-            <div> {{ item.nomeInst }} </div>
-          </div> -->
-          <!-- <input type="radio" id="i1" formControlName="ong" value="alimento" />
-          <label for="i1"
-            ><img src="http://vkontakte.ru/images/gifts/256/81.jpg" alt=""
-          /></label>
-          <input type="radio" id="i2" formControlName="ong" value="roupa" />
-          <label for="i2"
-            ><img src="http://vkontakte.ru/images/gifts/256/82.jpg" alt=""
-          /></label>
-          <input type="radio" id="i3" formControlName="ong" value="higiene" />
-          <label for="i3"
-            ><img src="http://vkontakte.ru/images/gifts/256/83.jpg" alt=""
-          /></label>
-          <input type="radio" id="i4" formControlName="ong" value="brinquedo" />
-          <label for="i4"
-            ><img src="http://vkontakte.ru/images/gifts/256/84.jpg" alt=""
-          /></label> -->
+          <mat-radio-group formControlName="ong">
+            <mat-radio-button *ngFor="let item of listOng" value="item">
+              {{ item.nomeInst }}
+            </mat-radio-button>
+          </mat-radio-group>
+
+          <pre> {{ ong | json }} </pre>
         </div>
 
         <input
@@ -72,7 +71,8 @@
         />
       </fieldset>
       <fieldset>
-        <h2 class="fs-title">Detalhe um pouco mais sobre a doação</h2>
+        <button class="btnVoltar" [routerLink]="['/home']">Cancelar</button>
+        <h2 class="fs-title">Detalhes da doação</h2>
         <h3 class="fs-subtitle">Preencha o formulário:</h3>
 
         <input

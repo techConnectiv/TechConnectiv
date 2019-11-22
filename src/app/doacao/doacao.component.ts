@@ -12,7 +12,7 @@ declare var $: any;
 })
 export class DoacaoComponent implements OnInit {
 
-  listDoacao = new MatTableDataSource([]);
+  listOng: any = [];
   erro: any = null;
 
   form: FormGroup;
@@ -24,20 +24,20 @@ export class DoacaoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
     this.jQuery();
     this.initForm();
 
-    this.customService.event.subscribe(
+    this.customService.getAll().subscribe(
       data => {
 
-        this.listDoacao = data;
-        console.log(this.listDoacao);
-
-        this.loading = false;
+        this.listOng = data;
+        console.log(this.listOng);
 
       });
 
     this.customService.getAll();
+
   }
 
   initForm() {
@@ -134,4 +134,5 @@ export class DoacaoComponent implements OnInit {
     })
 
   }
+
 }

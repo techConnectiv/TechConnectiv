@@ -1,10 +1,10 @@
 import { LoadingService } from './loading.service';
 import { Router } from '@angular/router';
-import { User } from './../login/usuario';
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject, throwError } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material';
 
 @Injectable({
   providedIn: 'root'
@@ -17,53 +17,32 @@ export class CustomerService {
   private baseUrl = 'https://techconn.herokuapp.com/api';
   private local = 'http://localhost:8080/api';
 
-  private currentUserSubject: BehaviorSubject<User>;
-  public currentUser: Observable<User>;
 
   constructor(
     private router: Router,
     private http: HttpClient,
+    private snackbar: MatSnackBar,
     private loadingService: LoadingService
-  ) {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
-    this.currentUser = this.currentUserSubject.asObservable();
-  }
+  ) { }
 
+  authenticate: boolean = false;
+  isAuth = new EventEmitter<boolean>();
   headers: HttpHeaders = new HttpHeaders({
     'Content-Type': 'application/json', 'responseType': 'text'
   });
 
-  public get currentUserValue(): User {
-    return this.currentUserSubject.value;
-  }
-
   getAll() {
-    
     this.loadingService.show();
-
-    this.http.get(`${this.local}/list`)
-      .pipe(
-        tap((data: any) => {
-
-          return data || {};
-
-        }),
-        catchError(error => {
-
-          this.loadingService.hide();
-
-          this.event.emit({ "erro": error });
-
-          return throwError(error)
+    
+    return this.http.get(`${this.local}/ong/list`);
+/*     .pipe(
+      map(data => {
+        console.log('Data', data)
+        
+          return data; //|| {};
 
         })
-      ).subscribe(resp => {
-
-        this.loadingService.hide();
-
-        this.event.emit(resp);
-
-      });
+      ) */
   }
 
   cadastrarUsuario(user: Object): Observable<Object> {
@@ -78,11 +57,36 @@ export class CustomerService {
     return this.http.post(`${this.local}` + `/empresa/criar`, form);
   }
 
-  login(login: string, senha: string):Observable<string> {
-    return this.http.post<string>(`${this.local}/login/usuario`, { login, senha })
+  login(login: string, senha: string): Observable<Object> {
+    return this.http.post(`${this.local}/login/usuario`, { login, senha }, { headers: this.headers })
+      .pipe(map(user => {
+        if (user) {
+          this.authenticate = true;
+
+          this.snackbar.open('Redirecionando, aguarde...', 'Fechar', {
+            duration: 2000
+          });
+          setTimeout(() => {
+            this.router.navigate(['/home']);
+            this.isAuth.emit(true);
+          }, 2000)
+        } else {
+          this.snackbar.open('Login ou senha inválidos...', 'Fechar',{
+            duration: 2000
+          });
+          this.authenticate = false;
+          this.isAuth.emit(false);
+        }
+        return user;
+      }));
+
   }
 
   logout() {
     this.router.navigate(['/login']);
+  }
+
+  userAuthenticate() {
+    return this.authenticate;
   }
 }

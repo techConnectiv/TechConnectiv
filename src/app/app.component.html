@@ -9,14 +9,13 @@
 
 <mat-toolbar>
   <img src="../../assets/logo.png" />
-  &nbsp;
-  &nbsp;
+  &nbsp; &nbsp;
   <span>TechConnective</span>
   <span class="example-spacer"></span>
-  <button *ngIf="mostrar" class="doar" [routerLink]="['/doacao']">Doar</button>
+  <button *ngIf="isAuth" class="doar" [routerLink]="['/doacao']">Doar</button>
 </mat-toolbar>
 
-<nav class="main-menu" *ngIf="mostrar">
+<nav class="main-menu" *ngIf="isAuth">
   <ul>
     <li>
       <a
@@ -74,6 +73,7 @@
         </span>
       </a>
     </li>
+    
     <li>
       <a href="#">
         <i class="fa fa-map-marker fa-2x"></i>
@@ -82,11 +82,9 @@
         </span>
       </a>
     </li>
-  </ul>
-
-  <ul class="logout">
+    
     <li>
-      <a routerLinkActive="active" (click)="customerService.logoff()">
+      <a style="cursor: pointer" (click)="customerService.logoff()">
         <i class="fa fa-power-off fa-2x"></i>
         <span class="nav-text">
           Logout

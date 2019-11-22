@@ -1,5 +1,4 @@
 import { CustomerService } from './service/user.service';
-import { User } from './login/usuario';
 import { LoginComponent } from './login/login.component';
 import { Router } from '@angular/router';
 import { Component, Input } from '@angular/core';
@@ -17,17 +16,16 @@ export class AppComponent {
 
   title = 'techConnective';
 
-  currentUser: User;
+  isAuth: boolean = false;
 
   constructor(
-    private router: Router,
     private customerService: CustomerService
-  ) {
-    this.customerService.currentUser.subscribe(x => this.currentUser = x);
+  ) { }
+
+  ngOnInit() {
+    this.customerService.isAuth.subscribe(
+      isAuth => this.isAuth = isAuth
+    );
   }
 
-/*   logout() {
-    this.customerService.logout();
-    this.router.navigate(['/login']);
-  } */
 }
