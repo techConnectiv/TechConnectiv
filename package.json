@@ -1,7 +1,7 @@
 {
   "name": "web-tech-connective",
   "version": "0.0.0",
-    "engines": {
+  "engines": {
     "node": "12.x"
   },
   "scripts": {
