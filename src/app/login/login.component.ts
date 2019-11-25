@@ -1,25 +1,67 @@
+import { CustomerService } from './../service/user.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../service/auth.service';
-import { Usuario } from './usuario';
+import { first } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
-  private usuario: Usuario = new Usuario();
+  loginUser: FormGroup;
+  loading = false;
+  submitted = false;
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private fb: FormBuilder,
+    private snackbar: MatSnackBar,
+    private customerService: CustomerService
+  ) {  }
+
+
+
 
   ngOnInit() {
+
+    this.loginUser = this.fb.group({
+      login: ['', Validators.required],
+      senha: ['', Validators.required]
+    });
+
+    this.customerService.logout();
+  }
+  get f() { return this.loginUser.controls; }
+
+  onSubmit() {
+
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.loginUser.invalid) {
+      return;
+    }
+
+    this.loading = true;
+
+    console.log(this.loginUser.value)
     
-  }
+    this.customerService.login(this.f.login.value, this.f.senha.value)
+      .subscribe(
+        data => {
 
-  login(){
-    //console.log(this.usuario);
-    this.authService.login(this.usuario);
-  }
+          this.loading = false;
+        },
+        error => {
+          this.loading = false;
 
+          this.snackbar.open('Login ou senha inválidos...', 'Fechar',{
+            duration: 2000
+          });
+          
+        });
+  }
 }

@@ -24,7 +24,7 @@
   background: #ffffff;
   position: fixed;
   bottom: 0;
-  top: 50px;
+  top: 64px;
   left: 0;
   width: 60px;
   overflow: hidden;
@@ -115,13 +115,6 @@ nav ul, nav li {
   border-radius: 0px 25px 25px 0px;
   width: 200px;
 }
-
-/* .area {
-    float: left;
-    background: #e2e2e2;
-    width: 100%;
-    height: 100%;
-} */
 
 @font-face {
   font-family: "Titillium Web";

@@ -1,6 +1,7 @@
+import { CustomerService } from './service/user.service';
+import { LoginComponent } from './login/login.component';
 import { Router } from '@angular/router';
 import { Component, Input } from '@angular/core';
-import { AuthService } from './service/auth.service';
 import { ThemePalette } from '@angular/material';
 
 @Component({
@@ -15,21 +16,16 @@ export class AppComponent {
 
   title = 'techConnective';
 
-  mostrar: boolean = false
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) {
+  isAuth: boolean = false;
 
-  }
+  constructor(
+    private customerService: CustomerService
+  ) { }
 
   ngOnInit() {
-    this.authService.authEmitter.subscribe(
-      isAuth => this.mostrar = isAuth
+    this.customerService.isAuth.subscribe(
+      isAuth => this.isAuth = isAuth
     );
   }
 
-  ngOnDestroy() {
-    this.authService.logoff();
-  }
 }

@@ -8,7 +8,6 @@ import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CadastroComponent } from './cadastro/cadastro.component';
-import { ParticlesComponent } from './particles/particles/particles.component';
 import { AuthGuardService } from './service/auth-guard.service';
 
 const routes: Routes = [
@@ -18,9 +17,10 @@ const routes: Routes = [
   { path: 'info', component: InfoComponent, canActivate: [AuthGuardService] },
   { path: 'login', component: LoginComponent },
   { path: 'cadastro', component: CadastroComponent },
-  { path: 'index', component: EstaticoComponent },
+  { path: '', component: EstaticoComponent },
   { path: 'doacao', component: DoacaoComponent/* , canActivate: [AuthGuardService] */},
-  { path: '', redirectTo: '/index', pathMatch: 'full' },
+  /* { path: '', redirectTo: '/index', pathMatch: 'full' }, */
+  { path: '**', redirectTo: ''}
 ];
 
 @NgModule({

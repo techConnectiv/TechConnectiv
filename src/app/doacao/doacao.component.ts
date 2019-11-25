@@ -1,5 +1,7 @@
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { CustomerService } from './../service/user.service';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material';
 
 declare var $: any;
 
@@ -10,24 +12,42 @@ declare var $: any;
 })
 export class DoacaoComponent implements OnInit {
 
+  listOng: any = [];
+  erro: any = null;
+
   form: FormGroup;
-  modelName: any;
+  loading: boolean = false;
 
   constructor(
+    private customService: CustomerService,
     private fb: FormBuilder
   ) { }
 
   ngOnInit() {
+
     this.jQuery();
     this.initForm();
+
+    this.customService.getAll().subscribe(
+      data => {
+
+        this.listOng = data;
+        console.log(this.listOng);
+
+      });
+
+    this.customService.getAll();
+
   }
 
   initForm() {
     this.form = this.fb.group({
-      tipo: new FormControl('')
-/*       higiene: '',
-      brinquedo: '',
-      roupa: '' */
+      tipo: [null, Validators.required],
+      ong: [null, Validators.required],
+      descricao: [null, Validators.required],
+      qnt: [null, Validators.required],
+      validade: [null, Validators.required],
+      comentario: ""
     });
   }
 
@@ -114,4 +134,5 @@ export class DoacaoComponent implements OnInit {
     })
 
   }
+
 }

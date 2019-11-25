@@ -43,17 +43,19 @@
   <div class="slider">
     <div class="indicator"></div>
   </div>
+
   <div class="content">
     <section>
-      <h2>Empresa</h2>
-      <mat-horizontal-stepper linear #stepper>
-        <mat-step [stepControl]="firstFormEmpresa">
-          <form
-            [formGroup]="firstFormEmpresa"
-            #f="ngForm"
-            (onSubmit)="onSubmit(f)"
-          >
-            <ng-template matStepLabel>Pessoal</ng-template>
+      <form id="msform" [formGroup]="firstFormEmpresa" #f="ngForm">
+        <ul id="progressbar">
+          <li class="active">Pessoal</li>
+          <li>Endereco</li>
+          <li>Contato</li>
+        </ul>
+        
+        <fieldset>
+          <div class="container">
+            
             <mat-form-field>
               <input
                 matInput
@@ -80,7 +82,7 @@
               />
             </mat-form-field>
             &nbsp;
-            <div formGroupName="credencial">
+            <div formGroupName="credenciais">
               <mat-form-field>
                 <input
                   matInput
@@ -100,6 +102,8 @@
                   required
                 />
               </mat-form-field>
+              &nbsp; &nbsp;
+              <!-- </div> -->
             </div>
             <mat-form-field>
               <input
@@ -110,415 +114,598 @@
                 required
               />
             </mat-form-field>
-            <div>
-              <button mat-button matStepperNext>Next</button>
+          </div>
+          <input
+            type="button"
+            name="next"
+            class="next action-button"
+            value="Next"
+          />
+        </fieldset>
+        <fieldset>
+          <div class="container">
+            <div formGroupName="endereco">
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="CEP"
+                  formControlName="cep"
+                  required
+                  id="cep"
+                />
+              </mat-form-field>
+              &nbsp;
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="Rua"
+                  formControlName="rua"
+                  required
+                  id="endereco"
+                />
+              </mat-form-field>
+              &nbsp;
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="Nº"
+                  formControlName="numero"
+                  required
+                />
+              </mat-form-field>
+              &nbsp;
+              <mat-form-field>
+                  <input
+                  matInput
+                  placeholder="Estado"
+                  formControlName="uf"
+                  required
+                  id="estado"
+                />
+<!--                 <mat-label>UF</mat-label>
+                <mat-select formControlName="uf" required id="estado">
+                  <mat-option *ngFor="let item of states" [value]="item">
+                    {{ item }}
+                  </mat-option>
+                </mat-select> -->
+              </mat-form-field>
+              &nbsp;
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="Cidade"
+                  formControlName="cidade"
+                  required
+                  id="cidade"
+                />
+              </mat-form-field>
+              &nbsp;
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="Bairro"
+                  formControlName="bairro"
+                  required
+                  id="bairro"
+                />
+              </mat-form-field>
+              &nbsp;
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="Complemento"
+                  formControlName="complemento"
+                />
+              </mat-form-field>
+              &nbsp;
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="Ponto de referência"
+                  formControlName="referencia"
+                />
+              </mat-form-field>
             </div>
-          </form>
-        </mat-step>
-        <mat-step [stepControl]="secondFormEmpresa">
-          <form [formGroup]="secondFormEmpresa">
-            <ng-template matStepLabel>Endereço</ng-template>
-            <mat-form-field>
-              <input matInput placeholder="CEP" formControlName="cep" />
-            </mat-form-field>
-            &nbsp;
-            <mat-form-field>
-              <input matInput placeholder="Rua" formControlName="rua" />
-            </mat-form-field>
-            &nbsp;
-            <mat-form-field>
-              <input matInput placeholder="Nº" formControlName="numero" />
-            </mat-form-field>
-            &nbsp;
-            <mat-form-field>
-              <mat-label>UF</mat-label>
-              <mat-select>
-                <mat-option *ngFor="let item of states" [value]="item">
-                  {{ item }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-            &nbsp;
-            <mat-form-field>
-              <input matInput placeholder="Cidade" formControlName="cidade" />
-            </mat-form-field>
-            &nbsp;
-            <mat-form-field>
-              <input matInput placeholder="Bairro" formControlName="bairro" />
-            </mat-form-field>
-            &nbsp;
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="Complemento"
-                formControlName="complemento"
-              />
-            </mat-form-field>
-            &nbsp;
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="Ponto de referência"
-                formControlName="referencia"
-              />
-            </mat-form-field>
-            <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Next</button>
+          </div>
+
+          <input
+            type="button"
+            name="previous"
+            class="previous action-button-previous"
+            value="Previous"
+          />
+          <input
+            type="button"
+            name="next"
+            class="next action-button"
+            value="Next"
+          />
+        </fieldset>
+        <fieldset>
+          <div class="container">
+            <div formGroupName="contato">
+              <mat-form-field>
+                <input
+                  matInput
+                  
+                  placeholder="Telefone"
+                  formControlName="telefone"
+                  required
+                />
+              </mat-form-field>
+              &nbsp;
+              <mat-form-field>
+                <input
+                  matInput
+                  mask="(99) 9 9999-9999"
+                  placeholder="Celular"
+                  formControlName="celular"
+                  required
+                />
+              </mat-form-field>
+              &nbsp;
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="E-mail"
+                  formControlName="email"
+                  required
+                />
+              </mat-form-field>
             </div>
-          </form>
-        </mat-step>
-        <mat-step [stepControl]="thirthFormEmpresa">
-          <form [formGroup]="thirthFormEmpresa">
-            <ng-template matStepLabel>Contato</ng-template>
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="Telefone"
-                formControlName="telefone"
-              />
-            </mat-form-field>
-            &nbsp;
-            <mat-form-field>
-              <input matInput placeholder="Celular" formControlName="celular" />
-            </mat-form-field>
-            &nbsp;
-            <mat-form-field>
-              <input matInput placeholder="E-mail" formControlName="email" />
-            </mat-form-field>
-            <div>
-              <div class="send">
-                <input matStepperNext value="Proximo" type="submit" />
-              </div>
-            </div>
-          </form>
-        </mat-step>
-      </mat-horizontal-stepper>
+          </div>
+
+          <input
+            type="button"
+            name="previous"
+            class="previous action-button-previous"
+            value="Previous"
+          />
+          <input
+            type="submit"
+            name="submit"
+            class="submit action-button"
+            value="Submit"
+            (click)="onSubmit(f)"
+          />
+        </fieldset>
+      </form>
+      <!-- <pre> {{ firstFormEmpresa.value | json }}</pre> -->
     </section>
+
     <section>
-      <h2>Usuario comum</h2>
-      <mat-horizontal-stepper linear #stepper>
-        <mat-step [stepControl]="firstFormDoador">
-          <form
-            [formGroup]="firstFormDoador"
-            #first="ngForm"
-            (ngSubmit)="onSubmit(first.value)"
-          >
-            <ng-template matStepLabel>Pessoal</ng-template>
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="Nome"
-                formControlName="nome"
-                required
-              />
-            </mat-form-field>
-            &nbsp;
-            <mat-form-field>
-              <input
+        <form id="msform" [formGroup]="firstFormDoador" #d="ngForm">
+          <ul id="progressbar">
+            <li class="active">Pessoal</li>
+            <li>Endereco</li>
+            <li>Contato</li>
+          </ul>
+          
+          <fieldset>
+            <div class="container">
+              
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="Nome"
+                  formControlName="nome"
+                  required
+                />
+              </mat-form-field>
+              &nbsp;
+              <mat-form-field>
+                <input
                 matInput
                 placeholder="CPF"
                 [textMask]="{ mask: cpfMask }"
                 formControlName="cpf"
                 required
               />
-            </mat-form-field>
-            &nbsp;
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="Data de nascimento"
-                formControlName="dataNascimento"
-                required
-              />
-            </mat-form-field>
-            &nbsp;
-            <mat-form-field>
-              <mat-label>Sexo</mat-label>
-              <mat-select formControlName="sex">
-                <mat-option *ngFor="let item of sexo" [value]="item">
-                  {{ item.viewValue }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-            &nbsp;
-            <div formGroupName="credencial">
-              <mat-form-field>
-                <input
-                  matInput
-                  placeholder="E-mail"
-                  type="email"
-                  formControlName="login"
-                  required
-                />
               </mat-form-field>
               &nbsp;
               <mat-form-field>
                 <input
                   matInput
-                  placeholder="Senha"
-                  type="password"
-                  formControlName="senha"
-                  required
-                />
-              </mat-form-field>
-            </div>
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="Repita sua senha"
-                type="password"
-                required
-              />
-            </mat-form-field>
-            <div>
-              <button mat-button matStepperNext>Next</button>
-            </div>
-          </form>
-        </mat-step>
-        <mat-step [stepControl]="secondFormDoador">
-          <form
-            [formGroup]="secondFormDoador"
-            #second="ngForm"
-            (ngSubmit)="onSubmit(second.value)"
-          >
-            <ng-template matStepLabel>Endereço</ng-template>
-            <mat-form-field>
-              <input matInput placeholder="CEP" formControlName="cep" />
-            </mat-form-field>
-            &nbsp;
-            <mat-form-field>
-              <input matInput placeholder="Rua" formControlName="rua" />
-            </mat-form-field>
-            &nbsp;
-            <mat-form-field>
-              <input matInput placeholder="Nº" formControlName="numero" />
-            </mat-form-field>
-            &nbsp;
-            <mat-form-field>
-              <mat-label>UF</mat-label>
-              <mat-select>
-                <mat-option *ngFor="let item of states" [value]="item">
-                  {{ item }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-            &nbsp;
-            <mat-form-field>
-              <input matInput placeholder="Cidade" formControlName="cidade" />
-            </mat-form-field>
-            &nbsp;
-            <mat-form-field>
-              <input matInput placeholder="Bairro" formControlName="bairro" />
-            </mat-form-field>
-            &nbsp;
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="Complemento"
-                formControlName="complemento"
-              />
-            </mat-form-field>
-            &nbsp;
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="Ponto de referência"
-                formControlName="referencia"
-              />
-            </mat-form-field>
-            <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Next</button>
-            </div>
-          </form>
-        </mat-step>
-        <mat-step [stepControl]="thirthFormDoador">
-          <form
-            [formGroup]="thirthFormDoador"
-            #thirth="ngForm"
-            (ngSubmit)="onSubmit(thirth.value)"
-          >
-            <ng-template matStepLabel>Contato</ng-template>
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="Telefone"
-                formControlName="telefone"
-              />
-            </mat-form-field>
-            &nbsp;
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="Celular"
-                formControlName="celular"
-                [textMask]="{ mask: mask }"
-              />
-            </mat-form-field>
-            &nbsp;
-            <mat-form-field>
-              <input
-                matInput
-                type="email"
-                placeholder="email"
-                formControlName="email"
-                email="true"
-              />
-            </mat-form-field>
-
-            <div>
-              <div class="send">
-                <input value="Enviar" type="submit" />
-              </div>
-            </div>
-          </form>
-        </mat-step>
-      </mat-horizontal-stepper>
-    </section>
-    <section>
-      <h2>Ong</h2>
-      <mat-horizontal-stepper linear #stepper>
-        <mat-step [stepControl]="firstFormOng">
-          <form [formGroup]="firstFormOng">
-            <ng-template matStepLabel>Pessoal</ng-template>
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="Nome da instituição"
-                formControlName="nomeInstituicao"
-                required
-              />
-            </mat-form-field>
-            &nbsp;
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="CNPJ"
-                formControlName="cnpj"
-                required
-              />
-            </mat-form-field>
-            <div formGroupName="credencial">
-              <mat-form-field>
-                <input
-                  matInput
-                  placeholder="E-mail"
-                  type="email"
-                  formControlName="login"
+                  placeholder="Data de nascimento"
+                  formControlName="dataNascimento"
                   required
                 />
               </mat-form-field>
               &nbsp;
               <mat-form-field>
+                <mat-label>Sexo</mat-label>
+                <mat-select formControlName="sex">
+                  <mat-option *ngFor="let item of sexo" [value]="item">
+                    {{ item.viewValue }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              &nbsp;
+              <div formGroupName="credenciais">
+                <mat-form-field>
+                  <input
+                    matInput
+                    type="email"
+                    placeholder="E-mail"
+                    formControlName="login"
+                    required
+                  />
+                </mat-form-field>
+                &nbsp;
+                <mat-form-field>
+                  <input
+                    matInput
+                    type="password"
+                    placeholder="Senha"
+                    formControlName="senha"
+                    required
+                  />
+                </mat-form-field>
+                &nbsp; &nbsp;
+                <!-- </div> -->
+              </div>
+              <mat-form-field>
                 <input
                   matInput
-                  placeholder="Senha"
                   type="password"
-                  formControlName="senha"
+                  placeholder="Repita sua senha"
+                  formControlName="repeteSenha"
                   required
                 />
               </mat-form-field>
             </div>
-
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="Repita sua senha"
-                type="password"
-                formControlName="repeteSenha"
-                required
-              />
-            </mat-form-field>
-            <div>
-              <button mat-button matStepperNext>Next</button>
-            </div>
-          </form>
-        </mat-step>
-        <mat-step [stepControl]="secondFormOng">
-          <form [formGroup]="secondFormOng">
-            <ng-template matStepLabel>Endereço</ng-template>
-            <mat-form-field>
-              <input matInput placeholder="CEP" formControlName="cep" />
-            </mat-form-field>
-            &nbsp;
-            <mat-form-field>
-              <input matInput placeholder="Rua" formControlName="rua" />
-            </mat-form-field>
-            &nbsp;
-            <mat-form-field>
-              <input matInput placeholder="Nº" formControlName="numero" />
-            </mat-form-field>
-            &nbsp;
-            <mat-form-field>
-              <mat-label>UF</mat-label>
-              <mat-select>
-                <mat-option *ngFor="let item of states" [value]="item">
-                  {{ item }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-            &nbsp;
-            <mat-form-field>
-              <input matInput placeholder="Cidade" formControlName="cidade" />
-            </mat-form-field>
-            &nbsp;
-            <mat-form-field>
-              <input matInput placeholder="Bairro" formControlName="bairro" />
-            </mat-form-field>
-            &nbsp;
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="Complemento"
-                formControlName="complemento"
-              />
-            </mat-form-field>
-            &nbsp;
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="Ponto de referência"
-                formControlName="referencia"
-              />
-            </mat-form-field>
-            <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Next</button>
-            </div>
-          </form>
-        </mat-step>
-        <mat-step [stepControl]="thirthFormOng">
-          <form [formGroup]="thirthFormOng">
-            <ng-template matStepLabel>Contato</ng-template>
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="Telefone"
-                formControlName="telefone"
-              />
-            </mat-form-field>
-            &nbsp;
-            <mat-form-field>
-              <input matInput placeholder="Celular" formControlName="celular" />
-            </mat-form-field>
-            &nbsp;
-            <mat-form-field>
-                <input
-                matInput
-                placeholder="E-mail"
-                formControlName="email"
-                required
-              />
-            </mat-form-field>
-            <div>
-              <div class="send">
-                <input matStepperNext value="Proximo" type="submit" />
+            <input
+              type="button"
+              name="next"
+              class="next action-button"
+              value="Next"
+            />
+          </fieldset>
+          <fieldset>
+            <div class="container">
+              <div formGroupName="endereco">
+                <mat-form-field>
+                  <input
+                    matInput
+                    placeholder="CEP"
+                    formControlName="cep"
+                    required
+                  />
+                </mat-form-field>
+                &nbsp;
+                <mat-form-field>
+                  <input
+                    matInput
+                    placeholder="Rua"
+                    formControlName="rua"
+                    required
+                  />
+                </mat-form-field>
+                &nbsp;
+                <mat-form-field>
+                  <input
+                    matInput
+                    placeholder="Nº"
+                    formControlName="numero"
+                    required
+                  />
+                </mat-form-field>
+                &nbsp;
+                <mat-form-field>
+                  <mat-label>UF</mat-label>
+                  <mat-select formControlName="uf" required>
+                    <mat-option *ngFor="let item of states" [value]="item">
+                      {{ item }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                &nbsp;
+                <mat-form-field>
+                  <input
+                    matInput
+                    placeholder="Cidade"
+                    formControlName="cidade"
+                    required
+                  />
+                </mat-form-field>
+                &nbsp;
+                <mat-form-field>
+                  <input
+                    matInput
+                    placeholder="Bairro"
+                    formControlName="bairro"
+                    required
+                  />
+                </mat-form-field>
+                &nbsp;
+                <mat-form-field>
+                  <input
+                    matInput
+                    placeholder="Complemento"
+                    formControlName="complemento"
+                  />
+                </mat-form-field>
+                &nbsp;
+                <mat-form-field>
+                  <input
+                    matInput
+                    placeholder="Ponto de referência"
+                    formControlName="referencia"
+                  />
+                </mat-form-field>
               </div>
             </div>
-          </form>
-        </mat-step>
-      </mat-horizontal-stepper>
-    </section>
+  
+            <input
+              type="button"
+              name="previous"
+              class="previous action-button-previous"
+              value="Previous"
+            />
+            <input
+              type="button"
+              name="next"
+              class="next action-button"
+              value="Next"
+            />
+          </fieldset>
+          <fieldset>
+            <div class="container">
+              <div formGroupName="contato">
+                <mat-form-field>
+                  <input
+                    matInput
+                    mask="(99) 9999-9999"
+                    placeholder="Telefone"
+                    formControlName="telefone"
+                    required
+                  />
+                </mat-form-field>
+                &nbsp;
+                <mat-form-field>
+                  <input
+                    matInput
+                    mask="(99) 9 9999-9999"
+                    placeholder="Celular"
+                    formControlName="celular"
+                    required
+                  />
+                </mat-form-field>
+                &nbsp;
+                <mat-form-field>
+                  <input
+                    matInput
+                    placeholder="E-mail"
+                    formControlName="email"
+                    required
+                  />
+                </mat-form-field>
+              </div>
+            </div>
+  
+            <input
+              type="button"
+              name="previous"
+              class="previous action-button-previous"
+              value="Previous"
+            />
+            <input
+              type="submit"
+              name="submit"
+              class="submit action-button"
+              value="Submit"
+              (click)="doadorSubmit(f)"
+            />
+          </fieldset>
+        </form>
+        <!-- <pre> {{ firstFormEmpresa.value | json }}</pre> -->
+      </section>
+
+      <section>
+        <form id="msform" [formGroup]="firstFormOng" #o="ngForm">
+          <ul id="progressbar">
+            <li class="active">Pessoal</li>
+            <li>Endereco</li>
+            <li>Contato</li>
+          </ul>
+          
+          <fieldset>
+            <div class="container">
+              
+                <mat-form-field>
+                  <input
+                    matInput
+                    placeholder="Nome da instituição"
+                    formControlName="nomeInstituicao"
+                    required
+                  />
+                </mat-form-field>
+                &nbsp;
+                <mat-form-field>
+                  <input
+                    matInput
+                    placeholder="CNPJ"
+                    formControlName="cnpj"
+                    required
+                  />
+                </mat-form-field>
+                <div formGroupName="credenciais">
+                  <mat-form-field>
+                    <input
+                      matInput
+                      placeholder="E-mail"
+                      type="email"
+                      formControlName="login"
+                      required
+                    />
+                  </mat-form-field>
+                  &nbsp;
+                  <mat-form-field>
+                    <input
+                      matInput
+                      placeholder="Senha"
+                      type="password"
+                      formControlName="senha"
+                      required
+                    />
+                  </mat-form-field>
+                </div>
+    
+                <mat-form-field>
+                  <input
+                    matInput
+                    placeholder="Repita sua senha"
+                    type="password"
+                    formControlName="repeteSenha"
+                    required
+                  />
+                </mat-form-field>
+            </div>
+            <input
+              type="button"
+              name="next"
+              class="next action-button"
+              value="Next"
+            />
+          </fieldset>
+          <fieldset>
+            <div class="container">
+              <div formGroupName="endereco">
+                <mat-form-field>
+                  <input
+                    matInput
+                    placeholder="CEP"
+                    formControlName="cep"
+                    required
+                  />
+                </mat-form-field>
+                &nbsp;
+                <mat-form-field>
+                  <input
+                    matInput
+                    placeholder="Rua"
+                    formControlName="rua"
+                    required
+                  />
+                </mat-form-field>
+                &nbsp;
+                <mat-form-field>
+                  <input
+                    matInput
+                    placeholder="Nº"
+                    formControlName="numero"
+                    required
+                  />
+                </mat-form-field>
+                &nbsp;
+                <mat-form-field>
+                  <mat-label>UF</mat-label>
+                  <mat-select formControlName="uf" required>
+                    <mat-option *ngFor="let item of states" [value]="item">
+                      {{ item }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                &nbsp;
+                <mat-form-field>
+                  <input
+                    matInput
+                    placeholder="Cidade"
+                    formControlName="cidade"
+                    required
+                  />
+                </mat-form-field>
+                &nbsp;
+                <mat-form-field>
+                  <input
+                    matInput
+                    placeholder="Bairro"
+                    formControlName="bairro"
+                    required
+                  />
+                </mat-form-field>
+                &nbsp;
+                <mat-form-field>
+                  <input
+                    matInput
+                    placeholder="Complemento"
+                    formControlName="complemento"
+                  />
+                </mat-form-field>
+                &nbsp;
+                <mat-form-field>
+                  <input
+                    matInput
+                    placeholder="Ponto de referência"
+                    formControlName="referencia"
+                  />
+                </mat-form-field>
+              </div>
+            </div>
+  
+            <input
+              type="button"
+              name="previous"
+              class="previous action-button-previous"
+              value="Previous"
+            />
+            <input
+              type="button"
+              name="next"
+              class="next action-button"
+              value="Next"
+            />
+          </fieldset>
+          <fieldset>
+            <div class="container">
+              <div formGroupName="contato">
+                <mat-form-field>
+                  <input
+                    matInput
+                    mask="(99) 9999-9999"
+                    placeholder="Telefone"
+                    formControlName="telefone"
+                    required
+                  />
+                </mat-form-field>
+                &nbsp;
+                <mat-form-field>
+                  <input
+                    matInput
+                    mask="(99) 9 9999-9999"
+                    placeholder="Celular"
+                    formControlName="celular"
+                    required
+                  />
+                </mat-form-field>
+                &nbsp;
+                <mat-form-field>
+                  <input
+                    matInput
+                    placeholder="E-mail"
+                    formControlName="email"
+                    required
+                  />
+                </mat-form-field>
+              </div>
+            </div>
+  
+            <input
+              type="button"
+              name="previous"
+              class="previous action-button-previous"
+              value="Previous"
+            />
+            <input
+              type="submit"
+              name="submit"
+              class="submit action-button"
+              value="Submit"
+              (click)="doadorSubmit(f)"
+            />
+          </fieldset>
+        </form>
+        <!-- <pre> {{ firstFormEmpresa.value | json }}</pre> -->
+      </section>
   </div>
 </div>
