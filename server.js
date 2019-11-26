@@ -12,4 +12,4 @@ res.sendFile(path.join(__dirname+'/dist/web-techConnective/index.html'));
 });
 
 // Inicia a aplicação pela porta configurada
-app.listen(process.env.PORT || 4200);
+app.listen(process.env.PORT || 8080);
