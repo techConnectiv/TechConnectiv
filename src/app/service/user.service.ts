@@ -58,7 +58,7 @@ export class CustomerService {
   }
 
   login(login: string, senha: string): Observable<Object> {
-    return this.http.post(`${this.local}/login/usuario`, { login, senha }, { headers: this.headers })
+    return this.http.post(`${this.baseUrl}/login/usuario`, { login, senha }, { headers: this.headers })
       .pipe(map(user => {
         if (user) {
           this.authenticate = true;
