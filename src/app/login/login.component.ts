@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private snackbar: MatSnackBar,
     private customerService: CustomerService
-  ) {  }
+  ) { }
 
 
 
@@ -46,22 +46,16 @@ export class LoginComponent implements OnInit {
     }
 
     this.loading = true;
-
-    console.log(this.loginUser.value)
-    
     this.customerService.login(this.f.login.value, this.f.senha.value)
       .subscribe(
         data => {
-
           this.loading = false;
         },
         error => {
           this.loading = false;
-
-          this.snackbar.open('Login ou senha inválidos...', 'Fechar',{
+          this.snackbar.open('Login ou senha inválidos...', 'Fechar', {
             duration: 2000
           });
-          
         });
   }
 }

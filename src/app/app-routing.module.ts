@@ -11,7 +11,7 @@ import { CadastroComponent } from './cadastro/cadastro.component';
 import { AuthGuardService } from './service/auth-guard.service';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuardService]},
+  { path: 'home', component: HomeComponent/* , canActivate: [AuthGuardService] */},
   { path: 'biography', component: BiografiaComponent, canActivate: [AuthGuardService] },
   { path: 'doubts', component: DoubtsComponent, canActivate: [AuthGuardService] },
   { path: 'info', component: InfoComponent, canActivate: [AuthGuardService] },

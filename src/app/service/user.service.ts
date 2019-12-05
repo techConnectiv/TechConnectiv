@@ -33,16 +33,15 @@ export class CustomerService {
 
   getAll() {
     this.loadingService.show();
-    
-    return this.http.get(`${this.local}/ong/list`);
-/*     .pipe(
-      map(data => {
-        console.log('Data', data)
-        
-          return data; //|| {};
+
+    return this.http.get(`${this.baseUrl}/ong/list`)
+      .pipe(
+        map(data => {
+
+          return data || {};
 
         })
-      ) */
+      )
   }
 
   cadastrarUsuario(user: Object): Observable<Object> {
@@ -53,12 +52,18 @@ export class CustomerService {
     return this.http.put(`${this.baseUrl}/${id}`, value);
   }
 
-  empresaCriar(form) {
-    return this.http.post(`${this.local}` + `/empresa/criar`, form);
+  empresaCriar(form): Observable<any> {
+    console.log("form aqui", form);
+    return this.http.post(`${this.local}/empresa/criar`, form);
+
+  }
+
+  doar(doacao): Observable<any> {
+    return this.http.post(`${this.local}/doacao/criar`, doacao);
   }
 
   login(login: string, senha: string): Observable<Object> {
-    return this.http.post(`${this.local}/login/usuario`, { login, senha }, { headers: this.headers })
+    return this.http.post(`${this.local}/login/empresa`, { login, senha }, { headers: this.headers })
       .pipe(map(user => {
         if (user) {
           this.authenticate = true;
@@ -71,7 +76,7 @@ export class CustomerService {
             this.isAuth.emit(true);
           }, 2000)
         } else {
-          this.snackbar.open('Login ou senha inválidos...', 'Fechar',{
+          this.snackbar.open('Login ou senha inválidos...', 'Fechar', {
             duration: 2000
           });
           this.authenticate = false;
@@ -84,9 +89,19 @@ export class CustomerService {
 
   logout() {
     this.router.navigate(['/login']);
+    this.authenticate = false;
+    this.isAuth.emit(false);
   }
+
+  /*   listaDoacao(page: number = 0 , linesPerPage: number = 0) {
+      return this.http.get(`${this.local}/doacao/list?page=${page}&linesPerPage=${linesPerPage}`);
+    } */
 
   userAuthenticate() {
     return this.authenticate;
+  }
+
+  paginator(page: number = 0, linesPerPage: number = 5) {
+    return this.http.get(`${this.local}/doacao/page?page=${page}&linesPerPage=${linesPerPage}`);
   }
 }

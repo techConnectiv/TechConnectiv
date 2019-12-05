@@ -19,9 +19,6 @@
               placeholder="Usuario"
               [ngClass]="{ 'is-invalid': submitted && f.login.errors }"
             />
-            <div *ngIf="submitted && f.login.errors" class="invalid-feedback">
-              <div *ngIf="f.login.errors.required">Username is required</div>
-            </div>
           </mat-form-field>
 
           <mat-form-field>
@@ -32,9 +29,6 @@
               placeholder="Senha"
               [ngClass]="{ 'is-invalid': submitted && f.senha.errors }"
             />
-            <div *ngIf="submitted && f.senha.errors" class="invalid-feedback">
-              <div *ngIf="f.senha.errors.required">Password is required</div>
-            </div>
           </mat-form-field>
         </div>
 
@@ -59,7 +53,7 @@
     <div class="container">
       Não tem conta?<a [routerLink]="['/cadastro']"><i> Cadastre-se </i></a>
       <br />
-      <a href="#"> Esqueceu sua senha? </a>
+      <a href="#"> <b> Esqueceu sua senha? </b> </a>
     </div>
   </div>
 </div>
