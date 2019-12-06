@@ -37,7 +37,7 @@
 
 /*inputs*/
 
-#msform input, #msform textarea {
+/* #msform input, #msform textarea {
     padding: 15px;
     border: 1px solid #ccc;
     border-radius: 0px;
@@ -59,7 +59,7 @@
     -webkit-transition: All 0.5s ease-in;
     -moz-transition: All 0.5s ease-in;
     -o-transition: All 0.5s ease-in;
-}
+} */
 
 /*buttons*/
 
@@ -75,8 +75,12 @@
     margin: 10px 5px;
 }
 
-#msform .action-button:hover, #msform .action-button:focus {
+#msform .action-button:hover {
     box-shadow: 0 0 0 2px white, 0 0 0 3px #ee0979;
+}
+
+#msform .action-button:focus {
+  background: #0c6edd;
 }
 
 #msform .action-button-previous {
@@ -200,9 +204,9 @@
 
 .container {
     padding: 30px 0;
-    width: 580px;
-    position: relative;
-    display: flex;
+    width: 100%;
+    /*     position: relative;
+    display: flex; */
     /* justify-content: space-between; */
 }
 
@@ -224,7 +228,7 @@ img {
 }
 
 input[type="radio"]:checked+label {
-    border-color: #f00;
+    border-color: blue;
 }
 
 .btnVoltar {
@@ -243,4 +247,23 @@ input[type="radio"]:checked+label {
 .btnVoltar:hover, .btnVoltar:focus {
     box-shadow: 0 0 0 2px white, 0 0 0 3px #ee0979;
     border: 0 none;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+mat-radio-button {
+    margin-left: 10px;
+}
+
+mat-radio-button img {
+    border-radius: 10px;
+    border: 2px solid #333;
+}
+
+.example-container {
+    height: 150px;
+    overflow: auto;
+    width: 100%;
 }

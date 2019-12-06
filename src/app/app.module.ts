@@ -15,8 +15,10 @@ import { HomeComponent } from './home/home.component';
 import { BiografiaComponent } from './biografia/biografia.component';
 import { DoubtsComponent } from './doubts/doubts.component';
 import { InfoComponent } from './info/info.component';
-import { MatProgressBarModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatTabsModule, MatStepperModule, MatButtonModule, MatOptionModule, MatSnackBar, MatSnackBarModule } from '@angular/material';
-import { MatDialogModule } from '@angular/material';
+import { MatProgressBarModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatSelectModule, MatTabsModule, MatStepperModule, MatButtonModule, MatOptionModule } from '@angular/material';
+import { MatDialogModule, MatListModule, MatDatepickerModule, MatPaginatorModule } from '@angular/material';
+import { MatSnackBarModule, MatExpansionModule, MatCheckboxModule, MatIconModule } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { EstaticoComponent } from './estatico/estatico.component';
 import { TextMaskModule } from 'angular2-text-mask';
@@ -27,6 +29,7 @@ import { MaterializeModule } from 'angular2-materialize';
 import { ModalComponent } from './home/modal/modal.component';
 import { DoacaoComponent } from './doacao/doacao.component';
 import { LayoutComponent } from './layout/layout.component';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -65,7 +68,15 @@ import { LayoutComponent } from './layout/layout.component';
     HttpClientModule,
     MatDialogModule,
     MatRadioModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatExpansionModule,
+    MatCheckboxModule,
+    MatIconModule,
+    MatListModule,
+    MatIconModule,
+    MatDatepickerModule,
+    HttpModule,
+    MatPaginatorModule
   ],
   entryComponents: [
     ModalComponent

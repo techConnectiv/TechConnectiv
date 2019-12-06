@@ -7,22 +7,22 @@ import { CustomerService } from './user.service';
 @Injectable({ providedIn: 'root' })
 export class AuthGuardService implements CanActivate {
 
-    constructor(
-        private userService: CustomerService,
-        private router: Router
-    ) { }
+  constructor(
+    private userService: CustomerService,
+    private router: Router
+  ) { }
 
-    canActivate(
-        route: ActivatedRouteSnapshot,
-        state: RouterStateSnapshot
-    ) : Observable<boolean> | boolean {
-        
-        if( this.userService.userAuthenticate()){
-            return true;
-        }
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<boolean> | boolean {
 
-        this.router.navigate(['/login'])
-
-        return false;
+    if (this.userService.userAuthenticate()) {
+      return true;
     }
+
+    this.router.navigate(['/login'])
+
+    return false;
+  }
 }

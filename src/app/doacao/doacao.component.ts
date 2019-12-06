@@ -1,7 +1,9 @@
+import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 import { CustomerService } from './../service/user.service';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators, NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatSnackBar } from '@angular/material';
 
 declare var $: any;
 
@@ -12,7 +14,17 @@ declare var $: any;
 })
 export class DoacaoComponent implements OnInit {
 
+  panelOpenState = false;
   listOng: any = [];
+  listItem: any = [{
+    tipo: "Alimento", url: "../../assets/face1.jpg"
+  }, {
+    tipo: "Roupa", url: "../../assets/face2.jpg"
+  }, {
+    tipo: "Higiene", url: "../../assets/face3.jpg"
+  }, {
+    tipo: "Brinquedo", url: "../../assets/face4.jpg"
+  }];
   erro: any = null;
 
   form: FormGroup;
@@ -20,7 +32,9 @@ export class DoacaoComponent implements OnInit {
 
   constructor(
     private customService: CustomerService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private snackbar: MatSnackBar,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -32,7 +46,6 @@ export class DoacaoComponent implements OnInit {
       data => {
 
         this.listOng = data;
-        console.log(this.listOng);
 
       });
 
@@ -42,13 +55,19 @@ export class DoacaoComponent implements OnInit {
 
   initForm() {
     this.form = this.fb.group({
-      tipo: [null, Validators.required],
-      ong: [null, Validators.required],
+      tipo: ["", Validators.required],
+      nomeOng: ["", Validators.required],
       descricao: [null, Validators.required],
       qnt: [null, Validators.required],
-      validade: [null, Validators.required],
+      validade: ["", Validators.required],
       comentario: ""
     });
+  }
+
+  searchOng(filterValue: string) {
+
+    this.listOng.filter = filterValue/* .trim().toLowerCase(); */
+
   }
 
   jQuery() {
@@ -133,6 +152,24 @@ export class DoacaoComponent implements OnInit {
       return false;
     })
 
+  }
+
+  onSubmit(doacao: NgForm) {
+    if (this.form.valid) {
+      this.customService.doar(this.form.value)
+        .subscribe(data => console.log(data)
+        );
+
+      this.snackbar.open('Doação efetuada com sucesso...', 'Fechar', {
+        duration: 2000
+      });
+
+      setTimeout(() => {
+        this.router.navigate(['/home']);
+      }, 1500);
+    } else {
+      return;
+    }
   }
 
 }

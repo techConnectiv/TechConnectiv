@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <form id="msform" [formGroup]="form">
+    <form id="msform" [formGroup]="form" #doacao="ngForm">
       <!-- progressbar -->
       <ul id="progressbar">
         <li class="active">Tipo de doação</li>
@@ -13,27 +13,16 @@
         <h2 class="fs-title">O que vai doar?</h2>
         <h3 class="fs-subtitle">Selecione uma opção:</h3>
 
-        <div class="container">
+        <div
+          class="container"
+          fxLayout="row"
+          fxLayoutAlign="space-between start"
+        >
           <mat-radio-group formControlName="tipo">
-            <mat-radio-button id="i1" value="alimento">
-              <label for="i1"
-                ><img src="../../assets/face1.jpg" alt="" matTooltip="Alimento"
-              /></label>
+            <mat-radio-button *ngFor="let item of listItem" [value]="item.tipo">
+              <img [src]="item.url" [matTooltip]="item.tipo" />
             </mat-radio-button>
           </mat-radio-group>
-          <!--           <input type="radio" id="i1" formControlName="tipo" value="alimento" />
-          <label for="i1"><img src="../../assets/face1.jpg" alt="" matTooltip="Alimento"/></label>
-          <input type="radio" id="i2" formControlName="tipo" value="roupa" />
-          <label for="i2"><img src="../../assets/face2.jpg" alt="" matTooltip="Roupa"/></label>
-          <input type="radio" id="i3" formControlName="tipo" value="higiene" />
-          <label for="i3"><img src="../../assets/face3.jpg" alt="" matTooltip="Higiene"/></label>
-          <input
-            type="radio"
-            id="i4"
-            formControlName="tipo"
-            value="brinquedo"
-          />
-          <label for="i4"><img src="../../assets/face4.jpg" alt="" matTooltip="Brinquedo"/></label> -->
         </div>
         <input
           type="button"
@@ -45,14 +34,37 @@
       <fieldset>
         <button class="btnVoltar" [routerLink]="['/home']">Cancelar</button>
         <h2 class="fs-title">Para qual Ong dejesa doar?</h2>
-        <h3 class="fs-subtitle">Selecione uma:</h3>
+        <!--         <h3 class="fs-subtitle">Selecione uma:</h3> -->
 
         <div class="container">
-          <mat-radio-group formControlName="ong">
-            <mat-radio-button *ngFor="let item of listOng" value="item">
-              {{ item.nomeInst }}
-            </mat-radio-button>
-          </mat-radio-group>
+          <mat-expansion-panel class="full-width">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Lista de Ongs
+              </mat-panel-title>
+              <mat-panel-description>
+                Selecione para quem deseja doar:
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <mat-form-field class="search" appearance="outline">
+              <mat-label>Pesquisar ong's</mat-label>
+              <input matInput (keyup)="searchOng($event.target.value)" />
+            </mat-form-field>
+
+            <div class="example-container">
+              <mat-form-field appearance="outline">
+                <mat-select formControlName="nomeOng">
+                  <mat-option
+                    *ngFor="let item of listOng"
+                    [value]="item.nomeInst"
+                  >
+                    {{ item.nomeInst }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </mat-expansion-panel>
         </div>
 
         <input
@@ -73,32 +85,61 @@
         <h2 class="fs-title">Detalhes da doação</h2>
         <h3 class="fs-subtitle">Preencha o formulário:</h3>
 
-        <input
-          type="text"
-          name="descricao"
-          placeholder="Descrição do produto"
-          formControlName="descricao"
-          required
-        />
-        <input
-          type="number"
-          name="qtd"
-          placeholder="Quantidade"
-          formControlName="qnt"
-          required
-        />
-        <input
-          type="date"
-          name="validade"
-          placeholder="Validade"
-          formControlName="validade"
-          required
-        />
-        <input
-          type="text"
-          name="comentario"
-          placeholder="Deixe um comentário..."
-        />
+        <mat-form-field appearance="outline">
+          <mat-label>Descrição do produto</mat-label>
+          <input
+            matInput
+            type="text"
+            name="descricao"
+            formControlName="descricao"
+            required
+          />
+        </mat-form-field>
+
+        <div fxLayout="row" fxLayoutAlign="space-between start">
+          <mat-form-field appearance="outline">
+            <mat-label>Quantidade</mat-label>
+            <input
+              matInput
+              type="number"
+              name="qtd"
+              formControlName="qnt"
+              required
+            />
+          </mat-form-field>
+
+          &nbsp;
+
+          <mat-form-field appearance="outline">
+            <mat-label>Validade</mat-label>
+            <input
+              matInput
+              readonly="true"
+              [matDatepicker]="validade"
+              name="validade"
+              placeholder="Validade"
+              formControlName="validade"
+              required
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="validade"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #validade></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Deixe um comentário...</mat-label>
+          <textarea
+            formControlName="comentario"
+            matInput
+            type="text"
+            name="comentario"
+            rows="3"
+          ></textarea>
+        </mat-form-field>
+
         <input
           type="button"
           name="previous"
@@ -110,8 +151,10 @@
           name="submit"
           class="submit action-button"
           value="Submit"
+          (click)="onSubmit(doacao)"
         />
       </fieldset>
     </form>
+    <pre> {{ form.value | json }} </pre>
   </div>
 </div>

@@ -1,11 +1,14 @@
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import { Estados } from './../model/estados';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { CustomerService } from '../service/user.service';
 import { MatSnackBar } from '@angular/material';
 
 export interface Sexo {
-  viewValue: string
+  viewValue: string;
 }
 
 declare var $: any;
@@ -22,13 +25,10 @@ export class CadastroComponent implements OnInit {
     { viewValue: 'Outros' }
   ];
 
-  states: string[] = [
-    'AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA',
-    'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'
-  ];
+  states: Estados[];
 
-  public mask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
-  public cpfMask = [/[0-9]/, /[0-9]/, /[0-9]/, '.', /[0-9]/, /[0-9]/, /[0-9]/, '.', /[0-9]/, /[0-9]/, /[0-9]/, '-', /[0-9]/, /[0-9]/];
+  cpfMask: '/(^\d{3}\.\d{3}\.\d{3}\-\d{2}$)|())^^dd22\\.\d{3}\.\d {3} \ / \ d {4} \ - \ d {2} $) /';
+
 
   firstFormEmpresa: FormGroup;
   firstFormDoador: FormGroup;
@@ -39,16 +39,19 @@ export class CadastroComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     private customer: CustomerService,
-    private router: Router,
-    private _snackBar: MatSnackBar
+    private snackbar: MatSnackBar,
+    private http: HttpClient,
+    private router: Router
+
   ) { }
 
   ngOnInit() {
+
     this.formDoador();
     this.formEmpresa();
     this.formOng();
     this.jQuery();
-    this.consultaCep();
+
   }
 
   formEmpresa() {
@@ -157,14 +160,21 @@ export class CadastroComponent implements OnInit {
 
   onSubmit(f: NgForm) {
 
-    this.customer.empresaCriar(this.firstFormEmpresa.value)
-      .subscribe(
-        data =>
-          //this.openSnackBar(),
-          console.log(data),
-        error => console.log('Erro!', error),
-      )
+    if (this.firstFormEmpresa.valid) {
 
+      this.customer.empresaCriar(this.firstFormEmpresa.value);
+
+      this.snackbar.open('Empresa cadastrada com sucesso...', 'Fechar', {
+        duration: 2000
+      });
+
+      setTimeout(() => {
+        this.router.navigate(['/login']);
+      }, 3000);
+
+    } else {
+      return;
+    }
 
   }
 
@@ -172,8 +182,11 @@ export class CadastroComponent implements OnInit {
 
     this.customer.cadastrarUsuario(this.firstFormDoador.value)
       .subscribe(
-        data =>
-          this.openSnackBar(),
+        data => {
+          this.snackbar.open('Doador cadastrado com sucesso...', 'Fechar', {
+            duration: 2000
+          });
+        },
         error => console.log('Erro!', error),
       )
   }
@@ -182,16 +195,13 @@ export class CadastroComponent implements OnInit {
 
     this.customer.empresaCriar(this.firstFormOng.value)
       .subscribe(
-        data =>
-          this.openSnackBar(),
+        data => {
+          this.snackbar.open('Ong cadastrada com sucesso...', 'Fechar', {
+            duration: 2000
+          });
+        },
         error => console.log('Erro!', error),
       )
-  }
-
-  openSnackBar() {
-    this._snackBar.open('Cadastrado com sucesso!', 'Fechar', {
-      duration: 3000
-    });
   }
 
   jQuery() {
@@ -278,23 +288,32 @@ export class CadastroComponent implements OnInit {
 
   }
 
-  consultaCep() {
-    $("#cep").change(function () {
-      var cep_code = $(this).val();
-      if (cep_code.length <= 0) return;
-      $.get("http://apps.widenet.com.br/busca-cep/api/cep.json", { code: cep_code },
-        function (result) {
-          if (result.status != 1) {
-            alert(result.message || "Houve um erro desconhecido");
-            return;
-          }
-          $("input#cep").val(result.code);
-          $("input#estado").val(result.state);
-          $("input#cidade").val(result.city);
-          $("input#bairro").val(result.district);
-          $("input#endereco").val(result.address);
-          $("input#estado").val(result.state);
-        });
-    })
+  consultaCep(cep, form) {
+    if (cep != '') {
+
+      let validaCep = /^[0-9]{8}$/;
+
+      if (validaCep.test(cep)) {
+        this.http.get(`//viacep.com.br/ws/${cep}/json`)
+          .pipe(map(dados => dados))
+          .subscribe(dados => this.populaDados(dados, form));
+      }
+    }
+  }
+
+
+  populaDados(dados, form) {
+    form.form.patchValue({
+      endereco: {
+        cep: dados.cep,
+        rua: dados.logradouro,
+        numero: '',
+        uf: dados.uf,
+        cidade: dados.localidade,
+        bairro: dados.bairro,
+        complemento: dados.complemento,
+        referencia: ''
+      }
+    });
   }
 }
