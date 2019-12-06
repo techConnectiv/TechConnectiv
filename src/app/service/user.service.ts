@@ -41,7 +41,7 @@ export class CustomerService {
           return data || {};
 
         })
-      )
+      );
   }
 
   cadastrarUsuario(user: Object): Observable<Object> {
@@ -93,15 +93,19 @@ export class CustomerService {
     this.isAuth.emit(false);
   }
 
-  /*   listaDoacao(page: number = 0 , linesPerPage: number = 0) {
-      return this.http.get(`${this.local}/doacao/list?page=${page}&linesPerPage=${linesPerPage}`);
-    } */
+  listaDoacao() {
+    return this.http.get(`${this.local}/doacao/list`)
+      .pipe(map(data => {
+        return data || {};
+      })
+      );
+  }
 
   userAuthenticate() {
     return this.authenticate;
   }
 
-  paginator(page: number = 0, linesPerPage: number = 5) {
+  listPage(page: number = 0, linesPerPage: number = 5) {
     return this.http.get(`${this.local}/doacao/page?page=${page}&linesPerPage=${linesPerPage}`);
   }
 }

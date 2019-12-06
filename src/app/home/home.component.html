@@ -1,8 +1,7 @@
-<p>
-  home works!
-</p>
 <div class="dashboard">
   <div class="grid grid-a1-a2 grid-white grid-updating">
+    <b>Relatório de Doações</b>
+    <span style="margin-right: 165px;"></span>
     <mat-form-field appearance="outline">
       <mat-label> Pesquisar doações</mat-label>
       <input
@@ -28,7 +27,9 @@
 
         <ng-container matColumnDef="descricao">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>DESCRIÇÃO</th>
-          <td mat-cell *matCellDef="let row">{{ row.descricao }}</td>
+          <td mat-cell *matCellDef="let row" style="max-width: 100px; padding: 0 20px 0 0;">
+            {{ row.descricao }}
+          </td>
         </ng-container>
 
         <ng-container matColumnDef="quantidade">
@@ -44,31 +45,83 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>
 
-      <mat-paginator
+      <!--       <mat-paginator
         #paginator
         [pageIndex]="page.pula"
         [length]="page.counts"
         [pageSize]="page.limit"
         showFirstLastButtons="true"
+
+      ></mat-paginator> -->
+
+      <mat-paginator
+        [length]="page.counts"
+        [pageSize]="page.limit"
         (page)="pageEvent($event)"
-      ></mat-paginator>
+      >
+      </mat-paginator>
     </div>
+  </div>
+  <div class="grid grid-c1-c1 grid-orange">
+    <canvas id="canvas" >
+      {{ chart }}
+    </canvas>
   </div>
   <div class="grid grid-b1-b1 grid-blue">
     <h1 class="grid-title">
       Weekly
     </h1>
   </div>
-  <div class="grid grid-c1-c1 grid-orange">
-    <h1 class="grid-title">
-      Monthly
-    </h1>
-  </div>
   <div class="grid grid-b2-c2 grid-red">
-    <mat-list class="container" fxLayout="row">
-      <mat-list-item *ngFor="let item of listItem">
-        <img [src]="item.url" [matTooltip]="item.tipo" />
-      </mat-list-item>
-    </mat-list>
+<!--       <div class="slide" *ngFor="let item of listItem">
+          <img [src]="item.url" [matTooltip]="item.tipo" height="100" width="250" alt="" />
+      </div> -->
+
+    <div class="slider">
+        <div class="slide-track">
+          <div class="slide">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100" width="250" alt="" />
+          </div>
+          <div class="slide">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" height="100" width="250" alt="" />
+          </div>
+          <div class="slide">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100" width="250" alt="" />
+          </div>
+          <div class="slide">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100" width="250" alt="" />
+          </div>
+          <div class="slide">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" height="100" width="250" alt="" />
+          </div>
+          <div class="slide">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250" alt="" />
+          </div>
+          <div class="slide">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250" alt="" />
+          </div>
+          <div class="slide">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100" width="250" alt="" />
+          </div>
+          <div class="slide">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" height="100" width="250" alt="" />
+          </div>
+          <div class="slide">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100" width="250" alt="" />
+          </div>
+          <div class="slide">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100" width="250" alt="" />
+          </div>
+          <div class="slide">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" height="100" width="250" alt="" />
+          </div>
+          <div class="slide">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250" alt="" />
+          </div>
+          <div class="slide">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250" alt="" />
+          </div>
+        </div>
+      </div>
   </div>
 </div>

@@ -1,7 +1,9 @@
+import { map } from 'rxjs/operators';
 import { ModalComponent } from './modal/modal.component';
 import { CustomerService } from './../service/user.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatDialog } from '@angular/material';
+import { Chart } from 'chart.js';
 
 declare var $: any;
 
@@ -36,6 +38,12 @@ export class HomeComponent implements OnInit {
     tipo: "Brinquedo", url: "../../assets/face4.jpg"
   }];
 
+  chart = [];
+  listDash: any = [];
+
+  tipo: any = [];
+  nomeOng: any = [];
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
@@ -50,6 +58,8 @@ export class HomeComponent implements OnInit {
     this.getter();
 
     this.carrocel();
+
+    this.listaDoacao();
   }
 
 
@@ -60,24 +70,81 @@ export class HomeComponent implements OnInit {
 
     this.refresh();
   }
+
   getter() {
-    this.customService.paginator(this.page.pula, this.page.limit).subscribe(
+    this.customService.listPage(this.page.pula, this.page.limit).subscribe(
       data => {
 
-        this.page.counts = data['totalPages'];
+        this.page.counts = data['totalElements'];
 
         this.page.limit = data['size'];
 
         this.page.index = data['number'];
 
         this.dataSource = new MatTableDataSource(data['content']);
-        this.dataSource.paginator = this.paginator;
 
-        console.log(this.page.pula, this.page.limit);
       }, (err: any) => {
         this.err = err;
       });
   }
+
+  listaDoacao() {
+    this.customService.listaDoacao()
+      .subscribe(data => {
+
+
+        this.listDash = data;
+
+        let tipo;
+        let nomeOng;
+
+        this.listDash.forEach(element => {
+          tipo = element.tipo;
+          nomeOng = element.nomeOng;
+
+          this.tipo.push(tipo);
+          this.nomeOng.push(nomeOng);
+        });
+
+        console.log(this.tipo, this.nomeOng);
+
+
+
+        this.chart = new Chart('canvas', {
+          type: 'line',
+          data: {
+            labels: ['Ago', 'Set', 'Out', 'Nov', 'Dez'],
+            datasets: [{
+              data: tipo,
+              borderColor: '#3cba9f',
+              fill: false
+            },
+            {
+              data: nomeOng,
+              borderColor: '#808080',
+              fill: false
+            }
+            ]
+          },
+          options: {
+            legend: {
+              display: false
+            },
+            scales: {
+              xAxes: [{
+                display: true
+              }],
+              yAxes: [{
+                display: true
+              }]
+            }
+          }
+        });
+
+
+      });
+  }
+
   openDialog(): void {
     this.dialogRef = this.dialog.open(ModalComponent, {
       panelClass: 'dialog-css',
@@ -98,31 +165,11 @@ export class HomeComponent implements OnInit {
 
 
   refresh(): void {
-    this.customService.paginator(this.page.pula, this.page.limit).subscribe();
+    this.customService.listPage(this.page.pula, this.page.limit).subscribe();
     this.ngOnInit();
   }
 
   carrocel() {
     $('#carousel123').carousel({ interval: 2000 });
   }
-
-  /*   function() {
-      $('.carousel-showmanymoveone .item').each(function () {
-        var itemToClone = $(this);
-
-        for (var i = 1; i < 4; i++) {
-          itemToClone = itemToClone.next();
-
-          // wrap around if at end of item collection
-          if (!itemToClone.length) {
-            itemToClone = $(this).siblings(':first');
-          }
-
-          // grab item, clone, add marker class, add to collection
-          itemToClone.children(':first-child').clone()
-            .addClass("cloneditem-" + (i))
-            .appendTo($(this));
-        }
-      });
-    }; */
 }
