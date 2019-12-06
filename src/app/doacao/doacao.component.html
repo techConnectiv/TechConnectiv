@@ -47,13 +47,14 @@
               </mat-panel-description>
             </mat-expansion-panel-header>
 
-            <mat-form-field class="search" appearance="outline">
+<!--             <mat-form-field class="search" appearance="outline">
               <mat-label>Pesquisar ong's</mat-label>
-              <input matInput (keyup)="searchOng($event.target.value)" />
-            </mat-form-field>
+              <input matInput (keyup)="applyFilter($event.target.value)" />
+            </mat-form-field> -->
 
             <div class="example-container">
               <mat-form-field appearance="outline">
+                <!-- <mat-label>Lista de Ong's</mat-label> -->
                 <mat-select formControlName="nomeOng">
                   <mat-option
                     *ngFor="let item of listOng"
@@ -155,6 +156,5 @@
         />
       </fieldset>
     </form>
-    <pre> {{ form.value | json }} </pre>
   </div>
 </div>

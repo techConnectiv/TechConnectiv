@@ -64,10 +64,8 @@ export class DoacaoComponent implements OnInit {
     });
   }
 
-  searchOng(filterValue: string) {
-
-    this.listOng.filter = filterValue/* .trim().toLowerCase(); */
-
+  applyFilter(filterValue: string) {
+    this.listOng.filter = filterValue.trim().toLowerCase();
   }
 
   jQuery() {
