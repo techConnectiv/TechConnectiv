@@ -54,16 +54,16 @@ export class CustomerService {
 
   empresaCriar(form): Observable<any> {
     console.log("form aqui", form);
-    return this.http.post(`${this.local}/empresa/criar`, form);
+    return this.http.post(`${this.baseUrl}/empresa/criar`, form);
 
   }
 
   doar(doacao): Observable<any> {
-    return this.http.post(`${this.local}/doacao/criar`, doacao);
+    return this.http.post(`${this.baseUrl}/doacao/criar`, doacao);
   }
 
   login(login: string, senha: string): Observable<Object> {
-    return this.http.post(`${this.local}/login/empresa`, { login, senha }, { headers: this.headers })
+    return this.http.post(`${this.baseUrl}/login/empresa`, { login, senha }, { headers: this.headers })
       .pipe(map(user => {
         if (user) {
           this.authenticate = true;
@@ -94,7 +94,7 @@ export class CustomerService {
   }
 
   listaDoacao() {
-    return this.http.get(`${this.local}/doacao/list`)
+    return this.http.get(`${this.baseUrl}/doacao/list`)
       .pipe(map(data => {
         return data || {};
       })
@@ -106,6 +106,6 @@ export class CustomerService {
   }
 
   listPage(page: number = 0, linesPerPage: number = 5) {
-    return this.http.get(`${this.local}/doacao/page?page=${page}&linesPerPage=${linesPerPage}`);
+    return this.http.get(`${this.baseUrl}/doacao/page?page=${page}&linesPerPage=${linesPerPage}`);
   }
 }

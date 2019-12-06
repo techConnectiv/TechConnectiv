@@ -47,23 +47,23 @@
               </mat-panel-description>
             </mat-expansion-panel-header>
 
-<!--             <mat-form-field class="search" appearance="outline">
+            <mat-form-field class="search" appearance="outline">
               <mat-label>Pesquisar ong's</mat-label>
               <input matInput (keyup)="applyFilter($event.target.value)" />
-            </mat-form-field> -->
+            </mat-form-field>
 
             <div class="example-container">
-              <mat-form-field appearance="outline">
-                <!-- <mat-label>Lista de Ong's</mat-label> -->
-                <mat-select formControlName="nomeOng">
-                  <mat-option
-                    *ngFor="let item of listOng"
-                    [value]="item.nomeInst"
-                  >
-                    {{ item.nomeInst }}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
+              <!-- <mat-form-field appearance="outline"> -->
+              <!-- <mat-label>Lista de Ong's</mat-label> -->
+              <mat-selection-list formControlName="nomeOng">
+                <mat-list-option
+                  *ngFor="let item of listOng"
+                  [value]="item.nomeInst"
+                >
+                  {{ item.nomeInst }}
+                </mat-list-option>
+              </mat-selection-list>
+              <!-- </mat-form-field> -->
             </div>
           </mat-expansion-panel>
         </div>

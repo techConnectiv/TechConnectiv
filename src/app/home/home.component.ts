@@ -41,9 +41,6 @@ export class HomeComponent implements OnInit {
   chart = [];
   listDash: any = [];
 
-  tipo: any = [];
-  nomeOng: any = [];
-
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
@@ -95,18 +92,18 @@ export class HomeComponent implements OnInit {
 
         this.listDash = data;
 
-        let tipo;
-        let nomeOng;
+        let tipo = [];
+        let nomeOng = [];
 
         this.listDash.forEach(element => {
-          tipo = element.tipo;
-          nomeOng = element.nomeOng;
+          let array1 = element.tipo;
+          let arrai2 = element.nomeOng;
 
-          this.tipo.push(tipo);
-          this.nomeOng.push(nomeOng);
+          tipo.push(array1);
+          nomeOng.push(arrai2);
         });
 
-        console.log(this.tipo, this.nomeOng);
+        console.log(tipo, nomeOng);
 
 
 
@@ -140,8 +137,6 @@ export class HomeComponent implements OnInit {
             }
           }
         });
-
-
       });
   }
 
