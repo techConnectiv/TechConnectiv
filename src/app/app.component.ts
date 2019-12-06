@@ -19,7 +19,7 @@ export class AppComponent {
   isAuth: boolean = false;
 
   constructor(
-    private customerService: CustomerService
+    public customerService: CustomerService
   ) { }
 
   ngOnInit() {
