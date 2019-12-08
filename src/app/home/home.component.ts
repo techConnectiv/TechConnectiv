@@ -103,16 +103,12 @@ export class HomeComponent implements OnInit {
           nomeOng.push(arrai2);
         });
 
-        console.log(tipo, nomeOng);
-
-
-
         this.chart = new Chart('canvas', {
           type: 'line',
           data: {
             labels: ['Ago', 'Set', 'Out', 'Nov', 'Dez'],
             datasets: [{
-              data: tipo,
+              data: tipo.length,
               borderColor: '#3cba9f',
               fill: false
             },

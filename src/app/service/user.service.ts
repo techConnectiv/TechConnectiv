@@ -53,12 +53,11 @@ export class CustomerService {
   }
 
   empresaCriar(form): Observable<any> {
-    console.log("form aqui", form);
     return this.http.post(`${this.baseUrl}/empresa/criar`, form);
 
   }
 
-  doar(doacao): Observable<any> {
+  doar(doacao: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/doacao/criar`, doacao);
   }
 

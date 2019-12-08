@@ -11,15 +11,15 @@ import { CadastroComponent } from './cadastro/cadastro.component';
 import { AuthGuardService } from './service/auth-guard.service';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent/* , canActivate: [AuthGuardService] */},
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuardService]},
   { path: 'biography', component: BiografiaComponent, canActivate: [AuthGuardService] },
   { path: 'doubts', component: DoubtsComponent, canActivate: [AuthGuardService] },
   { path: 'info', component: InfoComponent, canActivate: [AuthGuardService] },
   { path: 'login', component: LoginComponent },
   { path: 'cadastro', component: CadastroComponent },
   { path: '', component: EstaticoComponent },
-  { path: 'doacao', component: DoacaoComponent/* , canActivate: [AuthGuardService] */},
-  /* { path: '', redirectTo: '/index', pathMatch: 'full' }, */
+  { path: 'doacao', component: DoacaoComponent, canActivate: [AuthGuardService]},
+  { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: '**', redirectTo: ''}
 ];
 
