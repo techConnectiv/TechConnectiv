@@ -1,9 +1,8 @@
-import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { CustomerService } from './../service/user.service';
-import { FormGroup, FormBuilder, FormControl, Validators, NgForm } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource, MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 
 declare var $: any;
 
@@ -57,9 +56,9 @@ export class DoacaoComponent implements OnInit {
     this.form = this.fb.group({
       tipo: ["", Validators.required],
       nomeOng: ["", Validators.required],
-      descricao: [null, Validators.required],
-      qnt: [null, Validators.required],
-      validade: ["", Validators.required],
+      descricao: ["", Validators.required],
+      qnt: ["", Validators.required],
+      validade: [Date, Validators.required],
       comentario: ""
     });
   }
@@ -155,17 +154,21 @@ export class DoacaoComponent implements OnInit {
   onSubmit(doacao: NgForm) {
     if (this.form.valid) {
       this.customService.doar(this.form.value)
-        .subscribe(data => console.log(data)
-        );
-
+        .subscribe(data => {
+          console.log("esse é o value", data);
+        });
       this.snackbar.open('Doação efetuada com sucesso...', 'Fechar', {
         duration: 2000
       });
-
       setTimeout(() => {
         this.router.navigate(['/home']);
       }, 1500);
     } else {
+
+      this.snackbar.open('Preencha todos os campos obrigatórios...', 'Fechar', {
+        duration: 2000
+      });
+
       return;
     }
   }

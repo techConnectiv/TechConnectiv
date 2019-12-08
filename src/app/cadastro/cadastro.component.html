@@ -51,8 +51,8 @@
           <form id="msform" [formGroup]="firstFormEmpresa" #f="ngForm">
             <fieldset>
               <div class="container">
-                <mat-form-field>
-
+                <mat-form-field appearance="outline">
+                  <mat-label>Nome da Empresa</mat-label>
                   <input
                     matInput
                     placeholder="Nome da empresa"
@@ -61,7 +61,8 @@
                   />
                 </mat-form-field>
                 &nbsp;
-                <mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Razão Social</mat-label>
                   <input
                     matInput
                     placeholder="Razão social"
@@ -69,7 +70,8 @@
                   />
                 </mat-form-field>
                 &nbsp;
-                <mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>CNPJ</mat-label>
                   <input
                     matInput
                     placeholder="CNPJ"
@@ -80,7 +82,8 @@
                 </mat-form-field>
                 &nbsp;
                 <div formGroupName="credenciais">
-                  <mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
                     <input
                       matInput
                       type="email"
@@ -90,7 +93,8 @@
                     />
                   </mat-form-field>
                   &nbsp;
-                  <mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Senha</mat-label>
                     <input
                       matInput
                       type="password"
@@ -102,7 +106,8 @@
                   &nbsp; &nbsp;
                   <!-- </div> -->
                 </div>
-                <mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Repita a senha</mat-label>
                   <input
                     matInput
                     type="password"
@@ -122,7 +127,8 @@
             <fieldset>
               <div class="container">
                 <div formGroupName="endereco">
-                  <mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>CEP</mat-label>
                     <input
                       matInput
                       placeholder="CEP"
@@ -143,7 +149,8 @@
                     />
                   </mat-form-field>
                   &nbsp;
-                  <mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Número</mat-label>
                     <input
                       matInput
                       placeholder="Nº"
@@ -153,7 +160,8 @@
                     />
                   </mat-form-field>
                   &nbsp;
-                  <mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Estado</mat-label>
                     <input
                       matInput
                       placeholder="Estado"
@@ -169,7 +177,8 @@
                 </mat-select> -->
                   </mat-form-field>
                   &nbsp;
-                  <mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Cidade</mat-label>
                     <input
                       matInput
                       placeholder="Cidade"
@@ -179,7 +188,8 @@
                     />
                   </mat-form-field>
                   &nbsp;
-                  <mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Bairro</mat-label>
                     <input
                       matInput
                       placeholder="Bairro"
@@ -189,7 +199,8 @@
                     />
                   </mat-form-field>
                   &nbsp;
-                  <mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Complemento</mat-label>
                     <input
                       matInput
                       placeholder="Complemento"
@@ -198,7 +209,8 @@
                     />
                   </mat-form-field>
                   &nbsp;
-                  <mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Referencia</mat-label>
                     <input
                       matInput
                       placeholder="Ponto de referência"
@@ -224,7 +236,8 @@
             <fieldset>
               <div class="container">
                 <div formGroupName="contato">
-                  <mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Telefone</mat-label>
                     <input
                       matInput
                       placeholder="Telefone"
@@ -234,7 +247,8 @@
                     />
                   </mat-form-field>
                   &nbsp;
-                  <mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Celular</mat-label>
                     <input
                       matInput
                       mask="(99) 9 9999-9999"
@@ -244,7 +258,8 @@
                     />
                   </mat-form-field>
                   &nbsp;
-                  <mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Email secundário</mat-label>
                     <input
                       matInput
                       placeholder="E-mail"
@@ -277,15 +292,10 @@
 
     <section>
       <form id="msform" [formGroup]="firstFormDoador" #d="ngForm">
-        <ul id="progressbar">
-          <li class="active">Pessoal</li>
-          <li>Endereco</li>
-          <li>Contato</li>
-        </ul>
-
         <fieldset>
           <div class="container">
-            <mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Nome</mat-label>
               <input
                 matInput
                 placeholder="Nome"
@@ -294,7 +304,8 @@
               />
             </mat-form-field>
             &nbsp;
-            <mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>CPF</mat-label>
               <input
                 matInput
                 placeholder="CPF"
@@ -304,7 +315,8 @@
               />
             </mat-form-field>
             &nbsp;
-            <mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Data de nascimento</mat-label>
               <input
                 matInput
                 placeholder="Data de nascimento"
@@ -313,8 +325,8 @@
               />
             </mat-form-field>
             &nbsp;
-            <mat-form-field>
-              <mat-label>Sexo</mat-label>
+            <mat-form-field appearance="outline">
+              <mat-label>Genero</mat-label>
               <mat-select formControlName="sex">
                 <mat-option *ngFor="let item of sexo" [value]="item">
                   {{ item.viewValue }}
@@ -323,7 +335,8 @@
             </mat-form-field>
             &nbsp;
             <div formGroupName="credenciais">
-              <mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Email de login</mat-label>
                 <input
                   matInput
                   type="email"
@@ -333,7 +346,8 @@
                 />
               </mat-form-field>
               &nbsp;
-              <mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Senha</mat-label>
                 <input
                   matInput
                   type="password"
@@ -345,7 +359,8 @@
               &nbsp; &nbsp;
               <!-- </div> -->
             </div>
-            <mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Repetir senha</mat-label>
               <input
                 matInput
                 type="password"
@@ -365,7 +380,8 @@
         <fieldset>
           <div class="container">
             <div formGroupName="endereco">
-              <mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>CEP</mat-label>
                 <input
                   matInput
                   placeholder="CEP"
@@ -374,7 +390,8 @@
                 />
               </mat-form-field>
               &nbsp;
-              <mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Rua</mat-label>
                 <input
                   matInput
                   placeholder="Rua"
@@ -383,7 +400,8 @@
                 />
               </mat-form-field>
               &nbsp;
-              <mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Número</mat-label>
                 <input
                   matInput
                   placeholder="Nº"
@@ -392,8 +410,8 @@
                 />
               </mat-form-field>
               &nbsp;
-              <mat-form-field>
-                <mat-label>UF</mat-label>
+              <mat-form-field appearance="outline">
+                <mat-label>Estado</mat-label>
                 <mat-select formControlName="uf" required>
                   <mat-option *ngFor="let item of states" [value]="item">
                     {{ item }}
@@ -401,7 +419,8 @@
                 </mat-select>
               </mat-form-field>
               &nbsp;
-              <mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Cidade</mat-label>
                 <input
                   matInput
                   placeholder="Cidade"
@@ -410,7 +429,8 @@
                 />
               </mat-form-field>
               &nbsp;
-              <mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Bairro</mat-label>
                 <input
                   matInput
                   placeholder="Bairro"
@@ -419,7 +439,8 @@
                 />
               </mat-form-field>
               &nbsp;
-              <mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Complemento</mat-label>
                 <input
                   matInput
                   placeholder="Complemento"
@@ -427,7 +448,8 @@
                 />
               </mat-form-field>
               &nbsp;
-              <mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Referencia</mat-label>
                 <input
                   matInput
                   placeholder="Ponto de referência"
@@ -453,7 +475,8 @@
         <fieldset>
           <div class="container">
             <div formGroupName="contato">
-              <mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Telefone</mat-label>
                 <input
                   matInput
                   mask="(99) 9999-9999"
@@ -463,7 +486,8 @@
                 />
               </mat-form-field>
               &nbsp;
-              <mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Celular</mat-label>
                 <input
                   matInput
                   mask="(99) 9 9999-9999"
@@ -473,7 +497,8 @@
                 />
               </mat-form-field>
               &nbsp;
-              <mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Email secundário</mat-label>
                 <input
                   matInput
                   placeholder="E-mail"
@@ -504,15 +529,10 @@
 
     <section>
       <form id="msform" [formGroup]="firstFormOng" #o="ngForm">
-        <ul id="progressbar">
-          <li class="active">Pessoal</li>
-          <li>Endereco</li>
-          <li>Contato</li>
-        </ul>
-
         <fieldset>
           <div class="container">
-            <mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Nome da ong</mat-label>
               <input
                 matInput
                 placeholder="Nome da instituição"
@@ -521,7 +541,8 @@
               />
             </mat-form-field>
             &nbsp;
-            <mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>CNPJ</mat-label>
               <input
                 matInput
                 placeholder="CNPJ"
@@ -530,7 +551,8 @@
               />
             </mat-form-field>
             <div formGroupName="credenciais">
-              <mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
                 <input
                   matInput
                   placeholder="E-mail"
@@ -540,7 +562,8 @@
                 />
               </mat-form-field>
               &nbsp;
-              <mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Senha</mat-label>
                 <input
                   matInput
                   placeholder="Senha"
@@ -551,7 +574,8 @@
               </mat-form-field>
             </div>
 
-            <mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Repetir Senha</mat-label>
               <input
                 matInput
                 placeholder="Repita sua senha"
@@ -571,7 +595,8 @@
         <fieldset>
           <div class="container">
             <div formGroupName="endereco">
-              <mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>CEP</mat-label>
                 <input
                   matInput
                   placeholder="CEP"
@@ -580,7 +605,8 @@
                 />
               </mat-form-field>
               &nbsp;
-              <mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Rua</mat-label>
                 <input
                   matInput
                   placeholder="Rua"
@@ -589,7 +615,8 @@
                 />
               </mat-form-field>
               &nbsp;
-              <mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Número</mat-label>
                 <input
                   matInput
                   placeholder="Nº"
@@ -598,8 +625,8 @@
                 />
               </mat-form-field>
               &nbsp;
-              <mat-form-field>
-                <mat-label>UF</mat-label>
+              <mat-form-field appearance="outline">
+                <mat-label>Estado</mat-label>
                 <mat-select formControlName="uf" required>
                   <mat-option *ngFor="let item of states" [value]="item">
                     {{ item }}
@@ -607,7 +634,8 @@
                 </mat-select>
               </mat-form-field>
               &nbsp;
-              <mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Cidade</mat-label>
                 <input
                   matInput
                   placeholder="Cidade"
@@ -616,7 +644,8 @@
                 />
               </mat-form-field>
               &nbsp;
-              <mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Bairro</mat-label>
                 <input
                   matInput
                   placeholder="Bairro"
@@ -625,7 +654,8 @@
                 />
               </mat-form-field>
               &nbsp;
-              <mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Complemento</mat-label>
                 <input
                   matInput
                   placeholder="Complemento"
@@ -633,7 +663,8 @@
                 />
               </mat-form-field>
               &nbsp;
-              <mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Referência</mat-label>
                 <input
                   matInput
                   placeholder="Ponto de referência"
@@ -659,7 +690,8 @@
         <fieldset>
           <div class="container">
             <div formGroupName="contato">
-              <mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Telefone</mat-label>
                 <input
                   matInput
                   mask="(99) 9999-9999"
@@ -669,7 +701,8 @@
                 />
               </mat-form-field>
               &nbsp;
-              <mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Celular</mat-label>
                 <input
                   matInput
                   mask="(99) 9 9999-9999"
@@ -679,7 +712,7 @@
                 />
               </mat-form-field>
               &nbsp;
-              <mat-form-field>
+              <mat-form-field appearance="outline">
                 <input
                   matInput
                   placeholder="E-mail"

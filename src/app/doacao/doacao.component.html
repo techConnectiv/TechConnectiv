@@ -1,13 +1,6 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <form id="msform" [formGroup]="form" #doacao="ngForm">
-      <!-- progressbar -->
-      <ul id="progressbar">
-        <li class="active">Tipo de doação</li>
-        <li>Selecionando ONG</li>
-        <li>Preenchendo formulário</li>
-      </ul>
-      <!-- fieldsets -->
       <fieldset>
         <button class="btnVoltar" [routerLink]="['/home']">Cancelar</button>
         <h2 class="fs-title">O que vai doar?</h2>
@@ -33,69 +26,37 @@
       </fieldset>
       <fieldset>
         <button class="btnVoltar" [routerLink]="['/home']">Cancelar</button>
-        <h2 class="fs-title">Para qual Ong dejesa doar?</h2>
-        <!--         <h3 class="fs-subtitle">Selecione uma:</h3> -->
-
-        <div class="container">
-          <mat-expansion-panel class="full-width">
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                Lista de Ongs
-              </mat-panel-title>
-              <mat-panel-description>
-                Selecione para quem deseja doar:
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-
-            <mat-form-field class="search" appearance="outline">
-              <mat-label>Pesquisar ong's</mat-label>
-              <input matInput (keyup)="applyFilter($event.target.value)" />
-            </mat-form-field>
-
-            <div class="example-container">
-              <!-- <mat-form-field appearance="outline"> -->
-              <!-- <mat-label>Lista de Ong's</mat-label> -->
-              <mat-selection-list formControlName="nomeOng">
-                <mat-list-option
-                  *ngFor="let item of listOng"
-                  [value]="item.nomeInst"
-                >
-                  {{ item.nomeInst }}
-                </mat-list-option>
-              </mat-selection-list>
-              <!-- </mat-form-field> -->
-            </div>
-          </mat-expansion-panel>
-        </div>
-
-        <input
-          type="button"
-          name="previous"
-          class="previous action-button-previous"
-          value="Previous"
-        />
-        <input
-          type="button"
-          name="next"
-          class="next action-button"
-          value="Next"
-        />
-      </fieldset>
-      <fieldset>
-        <button class="btnVoltar" [routerLink]="['/home']">Cancelar</button>
         <h2 class="fs-title">Detalhes da doação</h2>
         <h3 class="fs-subtitle">Preencha o formulário:</h3>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Descrição do produto</mat-label>
-          <input
-            matInput
-            type="text"
-            name="descricao"
-            formControlName="descricao"
-            required
-          />
-        </mat-form-field>
+        <!--         <mat-form-field class="search" appearance="outline">
+            <mat-label>Pesquisar ong's</mat-label>
+            <input matInput (keyup)="applyFilter($event.target.value)" />
+          </mat-form-field> -->
+
+        <div fxLayout="row" fxLayoutAlign="space-between start">
+          <mat-form-field appearance="outline">
+            <mat-label> Nome da ong </mat-label>
+            <mat-select formControlName="nomeOng">
+              <mat-option *ngFor="let item of listOng" [value]="item.nomeInst">
+                {{ item.nomeInst }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          &nbsp;
+
+          <mat-form-field appearance="outline">
+            <mat-label>Descrição do produto</mat-label>
+            <input
+              matInput
+              type="text"
+              name="descricao"
+              formControlName="descricao"
+              required
+            />
+          </mat-form-field>
+        </div>
 
         <div fxLayout="row" fxLayoutAlign="space-between start">
           <mat-form-field appearance="outline">
