@@ -27,14 +27,18 @@ export class CadastroComponent implements OnInit {
 
   states: Estados[];
 
-  cpfMask: '/(^\d{3}\.\d{3}\.\d{3}\-\d{2}$)|())^^dd22\\.\d{3}\.\d {3} \ / \ d {4} \ - \ d {2} $) /';
-
-
   firstFormEmpresa: FormGroup;
   firstFormDoador: FormGroup;
   firstFormOng: FormGroup;
 
   isOptional = false;
+
+  celular = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  telefone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  cnpj = [/[1-9]/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/];
+  cpf = [/[1-9]/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
+
+
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -52,6 +56,7 @@ export class CadastroComponent implements OnInit {
     this.formOng();
     this.jQuery();
 
+    console.log(this.firstFormEmpresa.get("endereco.cep"));
   }
 
   formEmpresa() {
@@ -173,6 +178,9 @@ export class CadastroComponent implements OnInit {
       }, 3000);
 
     } else {
+      this.snackbar.open('Certifique-se de preencher todos os campos com *', 'Fechar', {
+        duration: 2000
+      });
       return;
     }
 
@@ -180,28 +188,46 @@ export class CadastroComponent implements OnInit {
 
   doadorSubmit(d: NgForm) {
 
-    this.customer.cadastrarUsuario(this.firstFormDoador.value)
-      .subscribe(
-        data => {
-          this.snackbar.open('Doador cadastrado com sucesso...', 'Fechar', {
-            duration: 2000
-          });
-        },
-        error => console.log('Erro!', error),
-      )
+    if (this.firstFormDoador.valid) {
+
+      this.customer.cadastrarUsuario(this.firstFormDoador.value);
+
+      this.snackbar.open('Usuario cadastrado com sucesso...', 'Fechar', {
+        duration: 2000
+      });
+
+/*       setTimeout(() => {
+        this.router.navigate(['/login']);
+      }, 3000); */
+
+    } else {
+      this.snackbar.open('Certifique-se de preencher todos os campos com *', 'Fechar', {
+        duration: 2000
+      });
+      return;
+    }
   }
 
   ongSubmit(o: NgForm) {
 
-    this.customer.empresaCriar(this.firstFormOng.value)
-      .subscribe(
-        data => {
-          this.snackbar.open('Ong cadastrada com sucesso...', 'Fechar', {
-            duration: 2000
-          });
-        },
-        error => console.log('Erro!', error),
-      )
+    if (this.firstFormOng.valid) {
+
+      this.customer.ongCriar(this.firstFormOng.value);
+      this.snackbar.open('Instituição cadastrada com sucesso...', 'Fechar', {
+        duration: 2000
+      });
+
+      setTimeout(() => {
+        this.router.navigate(['/login']);
+      }, 3000);
+
+    } else {
+      this.snackbar.open('Certifique-se de preencher todos os campos com *', 'Fechar', {
+        duration: 2000
+      });
+      return;
+    }
+
   }
 
   jQuery() {
@@ -299,8 +325,8 @@ export class CadastroComponent implements OnInit {
           .subscribe(dados => this.populaDados(dados, form));
       }
     }
-  }
 
+  }
 
   populaDados(dados, form) {
     form.form.patchValue({

@@ -31,8 +31,6 @@ export class LoginComponent implements OnInit {
       login: ['', Validators.required],
       senha: ['', Validators.required]
     });
-
-    this.customerService.logout();
   }
   get f() { return this.loginUser.controls; }
 

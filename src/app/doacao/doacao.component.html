@@ -18,10 +18,11 @@
           </mat-radio-group>
         </div>
         <input
+        [disabled]="form.controls.tipo.invalid"
           type="button"
           name="next"
           class="next action-button"
-          value="Next"
+          value="Próximo"
         />
       </fieldset>
       <fieldset>
@@ -106,13 +107,13 @@
           type="button"
           name="previous"
           class="previous action-button-previous"
-          value="Previous"
+          value="Voltar"
         />
         <input
           type="submit"
           name="submit"
           class="submit action-button"
-          value="Submit"
+          value="Cadastrar"
           (click)="onSubmit(doacao)"
         />
       </fieldset>

@@ -57,23 +57,28 @@ export class CustomerService {
 
   }
 
+  ongCriar(form): Observable<any> {
+    return this.http.post(`${this.baseUrl}/ong/criar`, form);
+
+  }
+
   doar(doacao: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/doacao/criar`, doacao);
   }
 
   login(login: string, senha: string): Observable<Object> {
-    return this.http.post(`${this.baseUrl}/login/empresa`, { login, senha }, { headers: this.headers })
+    return this.http.post(`${this.baseUrl}/login/usuario`, { login, senha }, { headers: this.headers })
       .pipe(map(user => {
         if (user) {
           this.authenticate = true;
 
           this.snackbar.open('Redirecionando, aguarde...', 'Fechar', {
-            duration: 2000
+            duration: 1000
           });
           setTimeout(() => {
             this.router.navigate(['/home']);
             this.isAuth.emit(true);
-          }, 2000)
+          }, 1000)
         } else {
           this.snackbar.open('Login ou senha inválidos...', 'Fechar', {
             duration: 2000
@@ -87,9 +92,14 @@ export class CustomerService {
   }
 
   logout() {
-    this.router.navigate(['/login']);
-    this.authenticate = false;
-    this.isAuth.emit(false);
+    this.snackbar.open('Saindo...', 'Fechar', {
+      duration: 500
+    });
+    setTimeout(() => {
+      this.router.navigate(['/login']);
+      this.authenticate = false;
+      this.isAuth.emit(false);
+    }, 500);
   }
 
   listaDoacao() {
