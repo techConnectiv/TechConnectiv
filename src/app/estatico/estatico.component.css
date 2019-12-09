@@ -1,4 +1,3 @@
-
 .content {
   height: 100%;
   width: 100%;
@@ -34,7 +33,7 @@ a {
 }
 
 a:hover {
-  color: #E1332D;
+  color: #01a9db;
 }
 
 .btn {
@@ -75,7 +74,7 @@ a:hover {
 
 .btn-1 rect {
   fill: none;
-  stroke: #e02c26;
+  stroke: #01a9db;
   stroke-width: 2;
   stroke-dasharray: 422, 0;
   transition: all 0.35s linear;
@@ -187,8 +186,22 @@ footer p {
   height: 50px;
   width: 50px;
   border-radius: 50%;
-  background: #E1332D;
+  background: #01a9db;
 }
+
+.voluntario {
+  height: 50px;
+  width: 50px;
+  background: #01a9db;
+  border-radius: 50%;
+}
+
+/* .voluntario img {
+  height: 100%;
+  width: 100%;
+  background-image: url("../../assets/./carrocel/voluntariado.jpg");
+  background-repeat: no-repeat;
+} */
 
 .container div {
   align-items: center;
@@ -294,27 +307,27 @@ footer p {
 }
 
 .accordion ul li:nth-child(1) {
-  background-image: url("http://michael-ferry.com/assets/accordion1.jpg");
+  background-image: url("../../assets/carrocel/01.png");
 }
 
 .accordion ul li:nth-child(2) {
-  background-image: url("http://michael-ferry.com/assets/accordion2.jpg");
+  background-image: url("../../assets/carrocel/c484b7724fa6694b223912dc65c825b7.jpg");
 }
 
 .accordion ul li:nth-child(3) {
-  background-image: url("http://michael-ferry.com/assets/accordion3.jpg");
+  background-image: url("../../assets/carrocel/DIA_DE_DOAR_05_NOV-copiar.jpg");
 }
 
 .accordion ul li:nth-child(4) {
-  background-image: url("http://michael-ferry.com/assets/accordion4.jpg");
+  background-image: url("../../assets/carrocel/photo_2019-11-04_14-35-20.jpg");
 }
 
 .accordion ul li:nth-child(5) {
-  background-image: url("http://michael-ferry.com/assets/accordion5.jpg");
+  background-image: url("../../assets/carrocel/IMG_6945.jpeg");
 }
 
 .accordion ul li:nth-child(6) {
-  background-image: url("http://michael-ferry.com/assets/accordion6.jpg");
+  background-image: url("../../assets/carrocel/souc_2020_ggg.jpg");
 }
 
 .accordion ul:hover li, .accordion ul:focus-within li {
@@ -531,4 +544,12 @@ footer a {
 
 .footer-social-overlap>a:not(:first-child) {
   margin-left: 0.38em;
+}
+
+.link {
+  color: #01a9db;
+}
+
+.link:hover {
+  color: crimson;
 }
