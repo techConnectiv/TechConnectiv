@@ -33,6 +33,13 @@ export class CadastroComponent implements OnInit {
 
   isOptional = false;
 
+  celular = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  telefone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  cnpj = [/[1-9]/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/];
+  cpf = [/[1-9]/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
+
+
+
   constructor(
     private _formBuilder: FormBuilder,
     private customer: CustomerService,
@@ -48,8 +55,8 @@ export class CadastroComponent implements OnInit {
     this.formEmpresa();
     this.formOng();
     this.jQuery();
-    this.mascara();
 
+    console.log(this.firstFormEmpresa.get("endereco.cep"));
   }
 
   formEmpresa() {
@@ -171,6 +178,9 @@ export class CadastroComponent implements OnInit {
       }, 3000);
 
     } else {
+      this.snackbar.open('Certifique-se de preencher todos os campos com *', 'Fechar', {
+        duration: 2000
+      });
       return;
     }
 
@@ -298,20 +308,6 @@ export class CadastroComponent implements OnInit {
       }
     }
 
-  }
-
-  mascara() {
-
-    $("#cpf").mask("999.999.999-99");
-    $('#cpf').blur(function () {
-      var id = $(this).attr("id");
-      var val = $(this).val();
-      var pattern = new RegExp(/[0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2}/);
-
-      if (val.match(pattern) == null) {
-        $("#" + id + "_error").html("Digite um CPF válido");
-      }
-    });
   }
 
   populaDados(dados, form) {

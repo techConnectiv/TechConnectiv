@@ -74,10 +74,11 @@
                   <mat-label>CNPJ</mat-label>
                   <input
                     matInput
-                    id="cpf"
+                    id="cnpj"
                     placeholder="CNPJ"
                     formControlName="cnpj"
                     required
+                    [textMask]="{mask: cnpj}"
                   />
                 </mat-form-field>
                 &nbsp;
@@ -118,6 +119,11 @@
                 </mat-form-field>
               </div>
               <input
+                [disabled]="
+                  firstFormEmpresa.controls.nomeEmpresa.invalid &&
+                  firstFormEmpresa.controls.cnpj.invalid &&
+                  firstFormEmpresa.controls.repeteSenha.invalid
+                "
                 type="button"
                 name="next"
                 class="next action-button"
@@ -139,7 +145,8 @@
                     />
                   </mat-form-field>
                   &nbsp;
-                  <mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label> Rua </mat-label>
                     <input
                       matInput
                       placeholder="Rua"
@@ -227,6 +234,10 @@
                 value="Voltar"
               />
               <input
+                [disabled]="
+                  firstFormEmpresa.get('endereco.cep').invalid &&
+                  firstFormEmpresa.get('endereco.numero').invalid
+                "
                 type="button"
                 name="next"
                 class="next action-button"
@@ -244,6 +255,7 @@
                       formControlName="telefone"
                       required
                       id="telefone"
+                      [textMask]="{mask: telefone}"
                     />
                   </mat-form-field>
                   &nbsp;
@@ -255,6 +267,7 @@
                       placeholder="Celular"
                       formControlName="celular"
                       required
+                      [textMask]="{mask: celular}"
                     />
                   </mat-form-field>
                   &nbsp;
@@ -277,7 +290,6 @@
                 value="Voltar"
               />
               <input
-                [disabled]="firstFormEmpresa.invalid"
                 type="submit"
                 name="submit"
                 class="submit action-button"
@@ -309,9 +321,9 @@
               <input
                 matInput
                 placeholder="CPF"
-                [textMask]="{ mask: cpfMask }"
                 formControlName="cpf"
                 required
+                [textMask]="{mask: cpf}"
               />
             </mat-form-field>
             &nbsp;
@@ -387,6 +399,7 @@
                   placeholder="CEP"
                   formControlName="cep"
                   required
+                  (blur)="consultaCep($event.target.value, d)"
                 />
               </mat-form-field>
               &nbsp;
@@ -479,7 +492,7 @@
                 <mat-label>Telefone</mat-label>
                 <input
                   matInput
-                  mask="(99) 9999-9999"
+                  [textMask]="{mask: telefone}"
                   placeholder="Telefone"
                   formControlName="telefone"
                   required
@@ -490,7 +503,7 @@
                 <mat-label>Celular</mat-label>
                 <input
                   matInput
-                  mask="(99) 9 9999-9999"
+                  [textMask]="{mask: celular}"
                   placeholder="Celular"
                   formControlName="celular"
                   required
@@ -548,6 +561,7 @@
                 placeholder="CNPJ"
                 formControlName="cnpj"
                 required
+                [textMask]="{mask: cnpj}"
               />
             </mat-form-field>
             <div formGroupName="credenciais">
@@ -602,6 +616,7 @@
                   placeholder="CEP"
                   formControlName="cep"
                   required
+                  (blur)="consultaCep($event.target.value, o)"
                 />
               </mat-form-field>
               &nbsp;
@@ -694,7 +709,7 @@
                 <mat-label>Telefone</mat-label>
                 <input
                   matInput
-                  mask="(99) 9999-9999"
+                  [textMask]="{mask: telefone}"
                   placeholder="Telefone"
                   formControlName="telefone"
                   required
@@ -705,7 +720,7 @@
                 <mat-label>Celular</mat-label>
                 <input
                   matInput
-                  mask="(99) 9 9999-9999"
+                  [textMask]="{mask: celular}"
                   placeholder="Celular"
                   formControlName="celular"
                   required
@@ -738,7 +753,6 @@
           />
         </fieldset>
       </form>
-      <!-- <pre> {{ firstFormEmpresa.value | json }}</pre> -->
     </section>
   </div>
 </div>
