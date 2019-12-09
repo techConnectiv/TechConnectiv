@@ -50,6 +50,11 @@ a:hover {
   width: 100%;
 }
 
+p {
+  font-family: 'Bahnschrift';
+  font-size: 25px!important;
+}
+
 @media (min-width: 600px) {
   .btn {
     margin: 0 1em 2em;
@@ -212,8 +217,17 @@ footer p {
   text-align: center;
 }
 
-.container span {
-  max-width: 150px;
+.container .opc2 p {
+  max-width: 200px;
+  text-align: left;
+}
+
+.separation {
+  margin-left: 150px;
+}
+
+.separation2 {
+  margin-right: 150px;
 }
 
 .paragrafo {

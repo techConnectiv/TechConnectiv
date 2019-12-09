@@ -196,9 +196,9 @@ export class CadastroComponent implements OnInit {
         duration: 2000
       });
 
-/*       setTimeout(() => {
+      setTimeout(() => {
         this.router.navigate(['/login']);
-      }, 3000); */
+      }, 3000);
 
     } else {
       this.snackbar.open('Certifique-se de preencher todos os campos com *', 'Fechar', {
