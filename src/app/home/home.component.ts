@@ -92,36 +92,48 @@ export class HomeComponent implements OnInit {
 
         this.listDash = data;
 
-        let tipo = [];
-        let nomeOng = [];
-
-        this.listDash.forEach(element => {
-          let array1 = element.tipo;
-          let arrai2 = element.nomeOng;
-
-          tipo.push(array1);
-          nomeOng.push(arrai2);
-        });
-
         this.chart = new Chart('canvas', {
           type: 'line',
           data: {
             labels: ['Ago', 'Set', 'Out', 'Nov', 'Dez'],
             datasets: [{
-              data: tipo.length,
-              borderColor: '#3cba9f',
+              data: ["50", "96", "163", "150", "258"],
+              label: "Alimentos",
+              borderColor: '#1E90FF',
               fill: false
             },
             {
-              data: nomeOng,
-              borderColor: '#808080',
+              data: ["38", "72", "50", "263", "182"],
+              label: "Roupas",
+              borderColor: '#FFD700',
+              fill: false
+            },
+            {
+              data: ["80", "353", "240", "268", "304"],
+              label: "Higiene",
+              borderColor: '#32CD32',
+              fill: false
+            },
+            {
+              data: ["180", "126", "170", "230", "214"],
+              label: "Brinquedos",
+              borderColor: '#D2691E',
               fill: false
             }
             ]
           },
           options: {
+            responsive: true,
             legend: {
               display: false
+            },
+            tooltips: {
+              mode: 'index',
+              intersect: false,
+            },
+            hover: {
+              mode: 'nearest',
+              intersect: true
             },
             scales: {
               xAxes: [{

@@ -68,12 +68,12 @@ export class CustomerService {
           this.authenticate = true;
 
           this.snackbar.open('Redirecionando, aguarde...', 'Fechar', {
-            duration: 2000
+            duration: 1000
           });
           setTimeout(() => {
             this.router.navigate(['/home']);
             this.isAuth.emit(true);
-          }, 2000)
+          }, 1000)
         } else {
           this.snackbar.open('Login ou senha inválidos...', 'Fechar', {
             duration: 2000
@@ -87,9 +87,14 @@ export class CustomerService {
   }
 
   logout() {
-    this.router.navigate(['/login']);
-    this.authenticate = false;
-    this.isAuth.emit(false);
+    this.snackbar.open('Saindo...', 'Fechar', {
+      duration: 500
+    });
+    setTimeout(() => {
+      this.router.navigate(['/login']);
+      this.authenticate = false;
+      this.isAuth.emit(false);
+    }, 500);
   }
 
   listaDoacao() {

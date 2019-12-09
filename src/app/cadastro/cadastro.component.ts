@@ -27,9 +27,6 @@ export class CadastroComponent implements OnInit {
 
   states: Estados[];
 
-  cpfMask: '/(^\d{3}\.\d{3}\.\d{3}\-\d{2}$)|())^^dd22\\.\d{3}\.\d {3} \ / \ d {4} \ - \ d {2} $) /';
-
-
   firstFormEmpresa: FormGroup;
   firstFormDoador: FormGroup;
   firstFormOng: FormGroup;
@@ -51,6 +48,7 @@ export class CadastroComponent implements OnInit {
     this.formEmpresa();
     this.formOng();
     this.jQuery();
+    this.mascara();
 
   }
 
@@ -299,8 +297,22 @@ export class CadastroComponent implements OnInit {
           .subscribe(dados => this.populaDados(dados, form));
       }
     }
+
   }
 
+  mascara() {
+
+    $("#cpf").mask("999.999.999-99");
+    $('#cpf').blur(function () {
+      var id = $(this).attr("id");
+      var val = $(this).val();
+      var pattern = new RegExp(/[0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2}/);
+
+      if (val.match(pattern) == null) {
+        $("#" + id + "_error").html("Digite um CPF válido");
+      }
+    });
+  }
 
   populaDados(dados, form) {
     form.form.patchValue({

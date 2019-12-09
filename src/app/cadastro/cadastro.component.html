@@ -74,10 +74,10 @@
                   <mat-label>CNPJ</mat-label>
                   <input
                     matInput
+                    id="cpf"
                     placeholder="CNPJ"
                     formControlName="cnpj"
                     required
-                    [textMask]="{ mask: cpfMask }"
                   />
                 </mat-form-field>
                 &nbsp;
@@ -251,7 +251,7 @@
                     <mat-label>Celular</mat-label>
                     <input
                       matInput
-                      mask="(99) 9 9999-9999"
+                      id="celular"
                       placeholder="Celular"
                       formControlName="celular"
                       required

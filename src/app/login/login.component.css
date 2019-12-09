@@ -102,3 +102,7 @@ a:hover {
   transition: 0.2s;
   color: #0066ff;
 }
+
+.div-container h2, .div-container h3 {
+  color: #fff;
+}
