@@ -57,12 +57,17 @@ export class CustomerService {
 
   }
 
+  ongCriar(form): Observable<any> {
+    return this.http.post(`${this.baseUrl}/ong/criar`, form);
+
+  }
+
   doar(doacao: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/doacao/criar`, doacao);
   }
 
   login(login: string, senha: string): Observable<Object> {
-    return this.http.post(`${this.baseUrl}/login/empresa`, { login, senha }, { headers: this.headers })
+    return this.http.post(`${this.baseUrl}/login/usuario`, { login, senha }, { headers: this.headers })
       .pipe(map(user => {
         if (user) {
           this.authenticate = true;

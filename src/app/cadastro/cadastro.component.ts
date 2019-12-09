@@ -188,28 +188,46 @@ export class CadastroComponent implements OnInit {
 
   doadorSubmit(d: NgForm) {
 
-    this.customer.cadastrarUsuario(this.firstFormDoador.value)
-      .subscribe(
-        data => {
-          this.snackbar.open('Doador cadastrado com sucesso...', 'Fechar', {
-            duration: 2000
-          });
-        },
-        error => console.log('Erro!', error),
-      )
+    if (this.firstFormDoador.valid) {
+
+      this.customer.cadastrarUsuario(this.firstFormDoador.value);
+
+      this.snackbar.open('Usuario cadastrado com sucesso...', 'Fechar', {
+        duration: 2000
+      });
+
+/*       setTimeout(() => {
+        this.router.navigate(['/login']);
+      }, 3000); */
+
+    } else {
+      this.snackbar.open('Certifique-se de preencher todos os campos com *', 'Fechar', {
+        duration: 2000
+      });
+      return;
+    }
   }
 
   ongSubmit(o: NgForm) {
 
-    this.customer.empresaCriar(this.firstFormOng.value)
-      .subscribe(
-        data => {
-          this.snackbar.open('Ong cadastrada com sucesso...', 'Fechar', {
-            duration: 2000
-          });
-        },
-        error => console.log('Erro!', error),
-      )
+    if (this.firstFormOng.valid) {
+
+      this.customer.ongCriar(this.firstFormOng.value);
+      this.snackbar.open('Instituição cadastrada com sucesso...', 'Fechar', {
+        duration: 2000
+      });
+
+      setTimeout(() => {
+        this.router.navigate(['/login']);
+      }, 3000);
+
+    } else {
+      this.snackbar.open('Certifique-se de preencher todos os campos com *', 'Fechar', {
+        duration: 2000
+      });
+      return;
+    }
+
   }
 
   jQuery() {
