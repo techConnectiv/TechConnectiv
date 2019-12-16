@@ -45,7 +45,7 @@ export class CustomerService {
   }
 
   cadastrarUsuario(user: Object): Observable<Object> {
-    return this.http.post(`${this.baseUrl}` + `/usuario/criar`, user, { headers: this.headers });
+    return this.http.post(`${this.baseUrl}/usuario/criar`, user, { headers: this.headers });
   }
 
   updateUsuario(id: any, value: any): Observable<Object> {

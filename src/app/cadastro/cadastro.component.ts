@@ -25,8 +25,6 @@ export class CadastroComponent implements OnInit {
     { viewValue: 'Outros' }
   ];
 
-  states: Estados[];
-
   firstFormEmpresa: FormGroup;
   firstFormDoador: FormGroup;
   firstFormOng: FormGroup;
@@ -37,6 +35,7 @@ export class CadastroComponent implements OnInit {
   telefone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   cnpj = [/[1-9]/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/];
   cpf = [/[1-9]/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
+  data = [/[1-9]/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/];
 
 
 
@@ -341,5 +340,7 @@ export class CadastroComponent implements OnInit {
         referencia: ''
       }
     });
+    console.log(dados.uf);
+
   }
 }
