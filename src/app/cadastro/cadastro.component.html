@@ -331,6 +331,7 @@
                 <mat-form-field appearance="outline">
                   <mat-label>Data de nascimento</mat-label>
                   <input
+                    [textMask]="{ mask: data }"
                     matInput
                     placeholder="Data de nascimento"
                     formControlName="dataNascimento"
@@ -344,7 +345,7 @@
                 >
                   <mat-label>Genero</mat-label>
                   <mat-select formControlName="sex" required>
-                    <mat-option *ngFor="let item of sexo" [value]="item">
+                    <mat-option *ngFor="let item of sexo" [value]="item.viewValue">
                       {{ item.viewValue }}
                     </mat-option>
                   </mat-select>
@@ -429,11 +430,12 @@
                   &nbsp;
                   <mat-form-field appearance="outline">
                     <mat-label>Estado</mat-label>
-                    <mat-select formControlName="uf" required>
-                      <mat-option *ngFor="let item of states" [value]="item">
-                        {{ item }}
-                      </mat-option>
-                    </mat-select>
+                    <input
+                      matInput
+                      placeholder="Estado"
+                      formControlName="uf"
+                      required
+                    />
                   </mat-form-field>
                   &nbsp;
                   <mat-form-field appearance="outline">
@@ -541,6 +543,7 @@
               />
             </fieldset>
           </form>
+          <pre>{{ firstFormDoador.value | json }}</pre>
         </div>
       </div>
     </section>
@@ -648,11 +651,12 @@
                   &nbsp;
                   <mat-form-field appearance="outline">
                     <mat-label>Estado</mat-label>
-                    <mat-select formControlName="uf" required>
-                      <mat-option *ngFor="let item of states" [value]="item">
-                        {{ item }}
-                      </mat-option>
-                    </mat-select>
+                    <input
+                      matInput
+                      placeholder="Estado"
+                      formControlName="uf"
+                      required
+                    />
                   </mat-form-field>
                   &nbsp;
                   <mat-form-field appearance="outline">
