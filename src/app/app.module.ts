@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatRadioModule } from '@angular/material/radio';
 
 import { NgModule } from '@angular/core';
@@ -62,7 +61,6 @@ import { LayoutComponent } from './layout/layout.component';
     MaterialModule,
     MatToolbarModule,
     AppRoutingModule,
-    FlexLayoutModule,
     MatProgressBarModule,
     MatFormFieldModule,
     MatInputModule,
