@@ -29,7 +29,6 @@ import { MaterializeModule } from 'angular2-materialize';
 import { ModalComponent } from './home/modal/modal.component';
 import { DoacaoComponent } from './doacao/doacao.component';
 import { LayoutComponent } from './layout/layout.component';
-import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -75,7 +74,6 @@ import { HttpModule } from '@angular/http';
     MatListModule,
     MatIconModule,
     MatDatepickerModule,
-    HttpModule,
     MatPaginatorModule
   ],
   entryComponents: [
