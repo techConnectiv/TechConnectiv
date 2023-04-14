@@ -48,7 +48,6 @@
     "particles.js": "^2.0.0",
     "particlesjs": "^2.2.3",
     "path": "^0.12.7",
-    "rxjs-compat": "^6.5.3",
     "swiper": "^3.4.2",
     "tslib": "^1.9.0",
     "webpack-jquery-ui": "^2.0.1",
