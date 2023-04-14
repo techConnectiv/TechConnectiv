@@ -1,11 +1,12 @@
 import { LoadingService } from './loading.service';
 import { Router } from '@angular/router';
-import { Injectable, Output, EventEmitter } from '@angular/core';
+import { Injectable, Output, EventEmitter, Directive } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject, throwError } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+@Directive()
 @Injectable({
   providedIn: 'root'
 })

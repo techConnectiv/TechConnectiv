@@ -37,7 +37,6 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { ParticlesComponent } from './particles/particles/particles.component';
 import { AuthGuardService } from './service/auth-guard.service';
 import { HttpClientModule } from '@angular/common/http';
-import { MaterializeModule } from 'angular2-materialize';
 import { ModalComponent } from './home/modal/modal.component';
 import { DoacaoComponent } from './doacao/doacao.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -75,7 +74,6 @@ import { LayoutComponent } from './layout/layout.component';
     MatButtonModule,
     TextMaskModule,
     MatOptionModule,
-    MaterializeModule,
     HttpClientModule,
     MatDialogModule,
     MatRadioModule,
