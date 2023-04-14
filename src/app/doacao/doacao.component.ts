@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { CustomerService } from './../service/user.service';
 import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 declare var $: any;
 

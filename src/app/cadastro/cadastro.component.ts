@@ -5,7 +5,7 @@ import { Estados } from './../model/estados';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { CustomerService } from '../service/user.service';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export interface Sexo {
   viewValue: string;

@@ -2,7 +2,7 @@ import { CustomerService } from './service/user.service';
 import { LoginComponent } from './login/login.component';
 import { Router } from '@angular/router';
 import { Component, Input } from '@angular/core';
-import { ThemePalette } from '@angular/material';
+import { ThemePalette } from '@angular/material/core';
 
 @Component({
   selector: 'app-root',
